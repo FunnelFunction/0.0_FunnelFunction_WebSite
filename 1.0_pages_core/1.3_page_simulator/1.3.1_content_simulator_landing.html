@@ -1,0 +1,541 @@
+<!--
+  1.3.1_content_simulator_landing.html
+
+  Purpose: Simulator landing page with SEO wrapper around iframes
+  Color Theme: Purple (Simulators) with cross-promotion to Blue (Deep Knowledge)
+
+  CROSS-PROMOTION STRATEGY:
+  - Links UP to Deep Knowledge (whitepapers the math is based on)
+  - Links ACROSS to Articles (case studies using these equations)
+  - Wraps iframes in crawlable SEO content
+-->
+
+<style>
+/* ========== SIMULATOR THEME (PURPLE) ========== */
+:root {
+    --sim-primary: #8b5cf6;
+    --sim-secondary: #d946ef;
+    --sim-accent: #a78bfa;
+    --sim-bg: #0a0a0f;
+    --sim-surface: rgba(139, 92, 246, 0.08);
+    --sim-border: rgba(139, 92, 246, 0.3);
+
+    /* Cross-reference colors */
+    --deep-knowledge-blue: #3b82f6;
+    --articles-orange: #f97316;
+    --social-red: #ef4444;
+}
+
+.sim-page {
+    background: var(--sim-bg);
+    color: #f1f5f9;
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.sim-hero {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+}
+
+.sim-hero-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.sim-hero-title {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--sim-primary), var(--sim-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+.sim-hero-subtitle {
+    font-size: 20px;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+/* SEO Content Block - This is what Google sees */
+.sim-seo-intro {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #c9d1d9;
+    line-height: 1.8;
+}
+
+.sim-seo-intro h2 {
+    color: #f1f5f9;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.sim-seo-intro p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Cross-Promotion Box */
+.sim-crosspromo {
+    background: var(--sim-surface);
+    border: 1px solid var(--sim-border);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.sim-crosspromo-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.sim-crosspromo-title.to-deep { color: var(--deep-knowledge-blue); }
+.sim-crosspromo-title.to-articles { color: var(--articles-orange); }
+.sim-crosspromo-title.to-social { color: var(--social-red); }
+
+.sim-crosspromo-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.sim-crosspromo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.sim-crosspromo-link:hover {
+    transform: translateY(-2px);
+}
+
+.sim-crosspromo-link.to-deep {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--deep-knowledge-blue);
+}
+
+.sim-crosspromo-link.to-articles {
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    color: var(--articles-orange);
+}
+
+.sim-crosspromo-link.to-social {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--social-red);
+}
+
+/* Simulator Container - iframe wrapper */
+.sim-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sim-embed-wrapper {
+    background: var(--sim-surface);
+    border: 1px solid var(--sim-border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 40px 0;
+}
+
+.sim-embed-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--sim-border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sim-embed-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.sim-embed-status.live {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.sim-embed-status.coming-soon {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+.sim-embed-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f1f5f9;
+}
+
+.sim-embed-frame {
+    width: 100%;
+    min-height: 600px;
+    border: none;
+    background: #111118;
+}
+
+/* SEO Footer - More crawlable content */
+.sim-seo-footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.sim-seo-footer h3 {
+    color: var(--sim-primary);
+    font-size: 22px;
+    margin: 30px 0 15px;
+}
+
+.sim-equation-preview {
+    background: rgba(139, 92, 246, 0.1);
+    border-left: 4px solid var(--sim-primary);
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    color: var(--sim-accent);
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+/* Simulator Grid */
+.sim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.sim-card {
+    background: var(--sim-surface);
+    border: 1px solid var(--sim-border);
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.sim-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+    border-color: var(--sim-primary);
+}
+
+.sim-card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.sim-card-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #f1f5f9;
+    margin-bottom: 10px;
+}
+
+.sim-card-desc {
+    color: #94a3b8;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.sim-card-equation {
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    color: var(--sim-accent);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.sim-card-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--sim-primary), var(--sim-secondary));
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.sim-card-btn:hover {
+    transform: translateY(-2px);
+}
+
+.sim-card-btn.disabled {
+    background: #374151;
+    cursor: not-allowed;
+}
+</style>
+
+<div class="sim-page">
+    <!-- HERO -->
+    <div class="sim-hero">
+        <div class="sim-hero-icon">🎮</div>
+        <h1 class="sim-hero-title">Pro-Marketing Simulators</h1>
+        <p class="sim-hero-subtitle">
+            Learn marketing science through play. These interactive tools let you
+            manipulate the variables of the <strong>Funnel Function</strong> and see
+            real-time effects on attention and conversion.
+        </p>
+    </div>
+
+    <!-- SEO INTRO - Crawlable content explaining what this is -->
+    <div class="sim-seo-intro">
+        <h2>The Mathematics Behind the Simulators</h2>
+        <p>
+            Every simulator on this page is built on the <strong>Funnel Function Master Equation</strong>—
+            a mathematical framework that decomposes commercial attention into computable variables.
+            Unlike traditional marketing intuition, these equations can be optimized, inverted, and
+            fed to autonomous systems.
+        </p>
+        <p>
+            The core equation powering these simulators:
+        </p>
+        <div class="sim-equation-preview">
+f(x) = (Body × Mind × Soul) / (Noise + Load + Friction) × Writability
+
+Where:
+  Body (B) = Somatic certainty from sensory evidence
+  Mind (M) = Prediction confidence from cognitive processing
+  Soul (S) = Identity congruence with self-concept
+        </div>
+        <p>
+            Each simulator lets you adjust these variables and observe how they interact
+            to produce (or suppress) commercial attention.
+        </p>
+    </div>
+
+    <!-- CROSS-PROMOTION: Link UP to Deep Knowledge -->
+    <div class="sim-crosspromo">
+        <div class="sim-crosspromo-title to-deep">📚 UNDERSTAND THE MATH BEHIND THESE SIMULATORS</div>
+        <div class="sim-crosspromo-links">
+            <a href="/whitepapers/mathematical-decomposition-of-trust/" class="sim-crosspromo-link to-deep">
+                📄 Read: The Mathematical Decomposition of Trust
+            </a>
+            <a href="/whitepapers/" class="sim-crosspromo-link to-deep">
+                📚 Browse All Whitepapers
+            </a>
+        </div>
+    </div>
+
+    <!-- SIMULATOR GRID -->
+    <div class="sim-grid">
+        <!-- Campaign Commander -->
+        <div class="sim-card">
+            <div class="sim-card-icon">🎯</div>
+            <h3 class="sim-card-title">Campaign Commander</h3>
+            <span class="sim-embed-status live">LIVE</span>
+            <p class="sim-card-desc">
+                Control marketing budget, creative quality, targeting precision, and brand
+                authenticity. Watch real-time conversion probability calculations.
+            </p>
+            <div class="sim-card-equation">𝒜 = (B·M·S) / Σ</div>
+            <a href="#campaign-commander" class="sim-card-btn">Launch Simulator →</a>
+        </div>
+
+        <!-- Gating Function Lab -->
+        <div class="sim-card">
+            <div class="sim-card-icon">🔬</div>
+            <h3 class="sim-card-title">Gating Function Lab</h3>
+            <span class="sim-embed-status live">LIVE</span>
+            <p class="sim-card-desc">
+                Visualize the Master Equation. Adjust each variable with sliders and see
+                how the attention function responds in real-time.
+            </p>
+            <div class="sim-card-equation">W(Φ,Ψ,ε) × f(x)</div>
+            <a href="#gating-function-lab" class="sim-card-btn">Launch Simulator →</a>
+        </div>
+
+        <!-- Attention Journey - Coming Soon -->
+        <div class="sim-card">
+            <div class="sim-card-icon">🧠</div>
+            <h3 class="sim-card-title">Attention Journey</h3>
+            <span class="sim-embed-status coming-soon">COMING SOON</span>
+            <p class="sim-card-desc">
+                Experience marketing from the buyer's perspective. See how mental states,
+                distractions, and identity affect your receptivity to messages.
+            </p>
+            <div class="sim-card-equation">Buyer POV Simulation</div>
+            <span class="sim-card-btn disabled">Coming Soon</span>
+        </div>
+
+        <!-- Forecast Engine - Coming Soon -->
+        <div class="sim-card">
+            <div class="sim-card-icon">📈</div>
+            <h3 class="sim-card-title">Forecast Engine</h3>
+            <span class="sim-embed-status coming-soon">COMING SOON</span>
+            <p class="sim-card-desc">
+                Plan campaigns with predicted 12-week outcomes. Compare scenarios before
+                committing budget.
+            </p>
+            <div class="sim-card-equation">∫ f(x) dt over T</div>
+            <span class="sim-card-btn disabled">Coming Soon</span>
+        </div>
+
+        <!-- Autopsy Lab - Coming Soon -->
+        <div class="sim-card">
+            <div class="sim-card-icon">🔍</div>
+            <h3 class="sim-card-title">Autopsy Lab</h3>
+            <span class="sim-embed-status coming-soon">COMING SOON</span>
+            <p class="sim-card-desc">
+                Upload your campaign results. Get diagnostic breakdown of which channel
+                failed and prescriptive recommendations.
+            </p>
+            <div class="sim-card-equation">f⁻¹(result) → diagnosis</div>
+            <span class="sim-card-btn disabled">Coming Soon</span>
+        </div>
+    </div>
+
+    <!-- CAMPAIGN COMMANDER EMBED -->
+    <div class="sim-container" id="campaign-commander">
+        <div class="sim-embed-wrapper">
+            <div class="sim-embed-header">
+                <span class="sim-embed-status live">LIVE</span>
+                <span class="sim-embed-title">Campaign Commander</span>
+            </div>
+            <!-- The iframe that Google can't see -->
+            <iframe
+                class="sim-embed-frame"
+                src="https://funnelfunction.github.io/campaign-commander/"
+                title="Campaign Commander Marketing Simulator"
+                loading="lazy"
+            ></iframe>
+        </div>
+    </div>
+
+    <!-- SEO CONTENT AROUND IFRAME - This IS crawlable -->
+    <div class="sim-seo-footer">
+        <h3>What Campaign Commander Teaches You</h3>
+        <p>
+            Campaign Commander demonstrates the <strong>multiplicative nature of the signal channels</strong>.
+            Notice that if ANY of Body, Mind, or Soul drops to zero, the entire function collapses—
+            regardless of how strong the other channels are. This explains why "almost-sales" fail:
+            missing one channel kills the conversion.
+        </p>
+
+        <h3>The Variables You Control</h3>
+        <ul>
+            <li><strong>Budget</strong> → Amplifies reach but doesn't change conversion rate</li>
+            <li><strong>Creative Quality (Body)</strong> → Sensory impact of your message</li>
+            <li><strong>Targeting Precision (Mind)</strong> → How well you match intent</li>
+            <li><strong>Brand Authenticity (Soul)</strong> → Identity alignment with audience</li>
+            <li><strong>Channel Selection</strong> → Affects Noise and Load suppressors</li>
+        </ul>
+
+        <h3>Key Insight</h3>
+        <p>
+            The denominator (Noise + Load + Friction) is <em>additive</em>. Suppressors accumulate
+            independently. But the numerator (B × M × S) is <em>multiplicative</em>. This asymmetry
+            explains why reducing friction often beats increasing signal.
+        </p>
+    </div>
+
+    <!-- CROSS-PROMOTION: Link to Articles -->
+    <div class="sim-crosspromo">
+        <div class="sim-crosspromo-title to-articles">📝 SEE THESE EQUATIONS IN ACTION</div>
+        <div class="sim-crosspromo-links">
+            <a href="/2025/12/05/the-purest-execution-of-fx-ever-recorded-the-mint-mobile-case-study/" class="sim-crosspromo-link to-articles">
+                📊 Case Study: How Mint Mobile Achieved Π = 0.994
+            </a>
+            <a href="/2025/12/07/the-death-of-trust-why-marketings-favorite-buzzword-is-a-mathematical-lie/" class="sim-crosspromo-link to-articles">
+                📄 Article: Why "Trust" is a Mathematical Lie
+            </a>
+        </div>
+    </div>
+
+    <!-- GATING FUNCTION LAB EMBED -->
+    <div class="sim-container" id="gating-function-lab">
+        <div class="sim-embed-wrapper">
+            <div class="sim-embed-header">
+                <span class="sim-embed-status live">LIVE</span>
+                <span class="sim-embed-title">Gating Function Lab</span>
+            </div>
+            <iframe
+                class="sim-embed-frame"
+                src="https://funnelfunction.github.io/gating-function-lab/"
+                title="Gating Function Lab - Master Equation Visualizer"
+                loading="lazy"
+            ></iframe>
+        </div>
+    </div>
+
+    <!-- MORE SEO CONTENT -->
+    <div class="sim-seo-footer">
+        <h3>Understanding the Gating Function</h3>
+        <p>
+            The <strong>Writability Gate W(Φ,Ψ,ε)</strong> is the final multiplier in the Master Equation.
+            Even if your signal is strong and suppression is low, if the target isn't "writable"—
+            if they're not open to change—the message won't land.
+        </p>
+        <p>
+            Writability depends on:
+        </p>
+        <ul>
+            <li><strong>Φ (Phi)</strong> → Current belief stability</li>
+            <li><strong>Ψ (Psi)</strong> → Openness to new information</li>
+            <li><strong>ε (Epsilon)</strong> → Environmental context</li>
+        </ul>
+
+        <h3>Why This Matters for Marketers</h3>
+        <p>
+            Traditional marketing assumes everyone is equally receptive. The Gating Function
+            reveals that <em>timing and context matter mathematically</em>. The same message to
+            the same person will produce different results depending on their writability state.
+        </p>
+    </div>
+
+    <!-- SOCIAL MEDIA CROSS-PROMOTION -->
+    <div class="sim-crosspromo">
+        <div class="sim-crosspromo-title to-social">📱 FOLLOW THE SCIENCE</div>
+        <div class="sim-crosspromo-links">
+            <a href="/4.0_social/4.1_social_aggregator/" class="sim-crosspromo-link to-social">
+                📱 Social Media Hub - Daily Insights
+            </a>
+            <a href="https://twitter.com/FunnelFunction" class="sim-crosspromo-link to-social" target="_blank">
+                𝕏 Follow @FunnelFunction
+            </a>
+        </div>
+    </div>
+
+    <!-- FINAL CROSS-PROMOTION -->
+    <div class="sim-crosspromo">
+        <div class="sim-crosspromo-title to-deep">🎓 GO DEEPER</div>
+        <div class="sim-crosspromo-links">
+            <a href="/whitepapers/mathematical-decomposition-of-trust/" class="sim-crosspromo-link to-deep">
+                📚 Full Whitepaper: Mathematical Decomposition of Trust
+            </a>
+            <a href="/about/" class="sim-crosspromo-link to-deep">
+                👥 About the Team Building This
+            </a>
+        </div>
+    </div>
+</div>

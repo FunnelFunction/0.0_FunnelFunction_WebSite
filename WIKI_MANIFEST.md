@@ -98,12 +98,20 @@
 
 ## 📱 SOCIAL (4.0)
 
+### Social Hub Page
+
+| ID | Component | Status | Links |
+|----|-----------|--------|-------|
+| 4.1 | **Social Media Aggregator** | 🔨 Ready (API Pending) | [GitHub](./4.0_social/4.1_social_aggregator/) |
+
 ### Aggregated Feeds
 
 | ID | Platform | Status | Links |
 |----|----------|--------|-------|
-| 4.1 | **LinkedIn** | 📋 Planned | [Config](./4.0_social/4.1_feed_linkedin/) |
-| 4.2 | **X/Twitter** | 📋 Planned | [Config](./4.0_social/4.2_feed_x_twitter/) |
+| 4.1.1 | **LinkedIn** | 🔌 API Pending | [Config](./4.0_social/4.1_feed_linkedin/) |
+| 4.1.2 | **X/Twitter** | 🔌 API Pending | [Config](./4.0_social/4.2_feed_x_twitter/) |
+| 4.1.3 | **Instagram** | 🔌 API Pending | — |
+| 4.1.4 | **TikTok** | 🔌 API Pending | — |
 | 4.3 | **GitHub Activity** | 🔨 Ready | [Config](./4.0_social/4.3_feed_github/) |
 | 4.4 | **Medium** | 📋 Planned | — |
 | 4.5 | **Substack** | 📋 Planned | — |
@@ -115,7 +123,7 @@
 |-----------|--------|-------------|
 | Master Aggregator | 📋 Planned | Pull from all sources |
 | Keyword Extractor | 📋 Planned | NLP for SEO |
-| SEO Generator | 📋 Planned | Crawlable content around embeds |
+| SEO Generator | ✅ Ready | Crawlable content around embeds |
 
 ---
 
@@ -176,14 +184,15 @@
 ## 📊 METRICS & GOALS
 
 ### Repository Stats
-- **Files Created**: 49
-- **Lines of Code**: 4,161
+- **Files Created**: 60+
+- **Lines of Code**: 5,500+
 - **Test Coverage**: 0% (scaffolded)
 
 ### Content Stats
 - **Whitepapers**: 1 live, 2 planned, 7 future
 - **Blog Posts**: 3 live, 3 planned, 2 future
-- **Simulators**: 2 live, 3 planned, 4 future
+- **Simulators**: 2 live (React), 3 planned, 4 future
+- **Social Hub**: 1 ready (API pending for feeds)
 - **Equations**: 1 implemented, 8 planned, 2 future
 
 ### Q1 2026 Targets
@@ -197,7 +206,7 @@
 
 ## 🔄 LAST UPDATED
 
-**2025-12-10** | Commit: `dfc205e`
+**2025-12-11** | Build simulators & social hub with cross-promotion ecosystem
 
 ---
 
