@@ -31,6 +31,13 @@
       --accent-hover: #dc2626;
       --blue: #1d9bf0;
       --green: #00ba7c;
+      --purple: #7c3aed;
+      --orange: #f97316;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
     }
 
     body {
@@ -38,18 +45,15 @@
       color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.5;
-      min-height: 100vh;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    /* Layout */
+    /* App Layout */
     .app {
-      max-width: 1200px;
-      margin: 0 auto;
+      height: 100vh;
       display: grid;
       grid-template-columns: 1fr 380px;
-      min-height: 100vh;
     }
 
     @media (max-width: 1000px) {
@@ -57,63 +61,25 @@
       .sidebar { display: none; }
     }
 
-    /* Main Column */
+    /* Main Column - Fixed Header + Scrollable Content */
     .main {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
       border-right: 1px solid var(--border);
-      min-height: 100vh;
+      overflow: hidden;
     }
 
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-
-    .header-top {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 12px 16px;
-    }
-
-    .back-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .back-btn:hover { background: var(--surface-2); }
-
-    .header-info h1 {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .header-info span {
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-
-    /* Profile Section */
-    .profile {
-      padding: 16px;
+    /* ========== FIXED PROFILE HEADER ========== */
+    .profile-fixed {
+      flex-shrink: 0;
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
 
     .profile-banner {
-      height: 200px;
+      height: 120px;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
-      border-radius: 16px;
-      margin-bottom: -68px;
       position: relative;
       overflow: hidden;
     }
@@ -121,80 +87,92 @@
     .profile-banner::after {
       content: 'f(x)';
       position: absolute;
-      right: 30px;
-      bottom: 30px;
-      font-size: 120px;
+      right: 20px;
+      bottom: 10px;
+      font-size: 80px;
       font-weight: 800;
       opacity: 0.1;
       color: var(--accent);
     }
 
-    .profile-header {
+    .profile-compact {
       display: flex;
-      justify-content: space-between;
       align-items: flex-start;
-      padding: 0 16px;
-      margin-bottom: 12px;
+      gap: 16px;
+      padding: 0 20px;
+      margin-top: -40px;
+      position: relative;
+      z-index: 10;
     }
 
     .avatar {
-      width: 134px;
-      height: 134px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      border: 4px solid var(--bg);
+      border: 3px solid var(--bg);
       background: linear-gradient(135deg, var(--accent), #f97316);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
+      font-size: 28px;
       font-weight: 800;
       color: white;
+      flex-shrink: 0;
+    }
+
+    .profile-details {
+      flex: 1;
+      padding-top: 44px;
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .profile-identity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .verified {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .profile-handle {
+      color: var(--text-secondary);
+      font-size: 14px;
     }
 
     .follow-btn {
-      margin-top: 80px;
-      padding: 10px 24px;
+      padding: 8px 20px;
       background: var(--text);
       color: var(--bg);
       border: none;
       border-radius: 9999px;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
-    .follow-btn:hover {
-      background: #d1d5db;
-    }
-
-    .profile-info {
-      padding: 0 16px;
-    }
-
-    .profile-name {
-      font-size: 20px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .verified {
-      color: var(--accent);
-      font-size: 18px;
-    }
-
-    .profile-handle {
-      color: var(--text-secondary);
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
+    .follow-btn:hover { background: #d1d5db; }
 
     .profile-bio {
-      font-size: 15px;
-      margin-bottom: 12px;
-      line-height: 1.6;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 8px 0;
+      line-height: 1.5;
     }
 
     .profile-bio strong { color: var(--accent); }
@@ -203,39 +181,89 @@
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-secondary);
-      margin-bottom: 12px;
+      padding-bottom: 12px;
     }
 
-    .profile-meta span {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+    .profile-meta a { color: var(--blue); }
 
     .profile-stats {
       display: flex;
-      gap: 20px;
-      font-size: 14px;
+      gap: 16px;
+      font-size: 13px;
+      padding-bottom: 12px;
     }
 
-    .profile-stats strong {
-      color: var(--text);
-      font-weight: 700;
-    }
+    .profile-stats strong { color: var(--text); }
 
-    /* Tabs */
-    .tabs {
+    /* ========== PRIMARY TABS ========== */
+    .primary-tabs {
       display: flex;
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      flex-shrink: 0;
     }
 
-    .tab {
+    .primary-tabs::-webkit-scrollbar { display: none; }
+
+    .primary-tab {
       flex: 1;
-      padding: 16px;
+      min-width: max-content;
+      padding: 14px 20px;
       text-align: center;
-      font-size: 15px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .primary-tab:hover {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    .primary-tab.active {
+      color: var(--text);
+    }
+
+    .primary-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .tab-icon {
+      font-size: 16px;
+    }
+
+    /* ========== SUB TABS ========== */
+    .sub-tabs {
+      display: flex;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .sub-tab {
+      flex: 1;
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 13px;
       font-weight: 500;
       color: var(--text-secondary);
       cursor: pointer;
@@ -243,33 +271,45 @@
       transition: all 0.2s;
     }
 
-    .tab:hover {
-      background: var(--surface-2);
-    }
-
-    .tab.active {
+    .sub-tab:hover {
+      background: var(--surface);
       color: var(--text);
-      font-weight: 700;
     }
 
-    .tab.active::after {
+    .sub-tab.active {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .sub-tab.active::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 56px;
-      height: 4px;
+      width: 50px;
+      height: 3px;
       background: var(--accent);
       border-radius: 2px;
     }
 
-    /* Feed */
-    .feed {
-      /* Posts go here */
+    /* ========== SCROLLABLE CONTENT ========== */
+    .content-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
-    /* Post */
+    /* Content panels */
+    .content-panel {
+      display: none;
+    }
+
+    .content-panel.active {
+      display: block;
+    }
+
+    /* ========== FEED POSTS ========== */
     .post {
       padding: 16px;
       border-bottom: 1px solid var(--border);
@@ -279,63 +319,40 @@
       cursor: pointer;
     }
 
-    .post:hover {
-      background: var(--surface);
-    }
+    .post:hover { background: var(--surface); }
 
     .post-avatar {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), #f97316);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 14px;
       color: white;
       flex-shrink: 0;
     }
 
-    .post-content {
-      flex: 1;
-      min-width: 0;
-    }
+    .post-content { flex: 1; min-width: 0; }
 
     .post-header {
       display: flex;
       align-items: center;
       gap: 4px;
       margin-bottom: 4px;
+      flex-wrap: wrap;
     }
 
-    .post-name {
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .post-verified {
-      color: var(--accent);
-      font-size: 14px;
-    }
-
-    .post-handle {
-      color: var(--text-secondary);
-      font-size: 15px;
-    }
-
-    .post-time {
-      color: var(--text-secondary);
-      font-size: 15px;
-    }
-
-    .post-time::before {
-      content: '·';
-      margin: 0 4px;
-    }
+    .post-name { font-weight: 700; font-size: 14px; }
+    .post-verified { color: var(--accent); font-size: 13px; }
+    .post-handle { color: var(--text-secondary); font-size: 14px; }
+    .post-time { color: var(--text-secondary); font-size: 14px; }
+    .post-time::before { content: '·'; margin: 0 4px; }
 
     .post-body {
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.6;
       margin-bottom: 12px;
       white-space: pre-wrap;
@@ -349,95 +366,71 @@
       border-radius: 4px;
     }
 
-    .post-body .hashtag {
-      color: var(--blue);
-    }
-
-    .post-body .mention {
-      color: var(--blue);
-    }
-
-    .post-media {
-      margin-bottom: 12px;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .post-media img {
-      width: 100%;
-      display: block;
-    }
-
-    .post-code {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 12px;
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
-      overflow-x: auto;
-    }
+    .post-body .hashtag { color: var(--blue); }
 
     .post-actions {
       display: flex;
       justify-content: space-between;
-      max-width: 425px;
+      max-width: 400px;
     }
 
     .post-action {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       color: var(--text-secondary);
       font-size: 13px;
-      padding: 8px;
-      margin: -8px;
+      padding: 6px;
+      margin: -6px;
       border-radius: 9999px;
       transition: all 0.2s;
     }
 
-    .post-action:hover {
-      color: var(--blue);
-      background: rgba(29, 155, 240, 0.1);
-    }
-
-    .post-action.like:hover {
-      color: #f91880;
-      background: rgba(249, 24, 128, 0.1);
-    }
-
-    .post-action.repost:hover {
-      color: var(--green);
-      background: rgba(0, 186, 124, 0.1);
-    }
+    .post-action:hover { color: var(--blue); background: rgba(29, 155, 240, 0.1); }
+    .post-action.like:hover { color: #f91880; background: rgba(249, 24, 128, 0.1); }
+    .post-action.repost:hover { color: var(--green); background: rgba(0, 186, 124, 0.1); }
 
     .post-label {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-secondary);
-      padding: 8px 16px;
+      padding: 6px 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .post-label-icon {
-      font-size: 16px;
+    /* ========== COMING SOON PANELS ========== */
+    .coming-soon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
     }
 
-    /* Pinned indicator */
-    .pinned .post-label {
+    .coming-soon-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .coming-soon h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .coming-soon p {
       color: var(--text-secondary);
+      max-width: 400px;
     }
 
-    /* Sidebar */
+    /* ========== SIDEBAR ========== */
     .sidebar {
       padding: 16px;
-      position: sticky;
-      top: 0;
       height: 100vh;
       overflow-y: auto;
+      background: var(--bg);
     }
 
     .sidebar-card {
@@ -448,13 +441,13 @@
     }
 
     .sidebar-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .sidebar-item {
-      padding: 12px 0;
+      padding: 10px 0;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -463,22 +456,17 @@
       transition: all 0.2s;
     }
 
-    .sidebar-item:last-child {
-      border-bottom: none;
-    }
-
-    .sidebar-item:hover {
-      opacity: 0.8;
-    }
+    .sidebar-item:last-child { border-bottom: none; }
+    .sidebar-item:hover { opacity: 0.8; }
 
     .sidebar-icon {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .sidebar-icon.linkedin { background: rgba(0, 119, 181, 0.2); color: #0077b5; }
@@ -487,48 +475,32 @@
     .sidebar-icon.youtube { background: rgba(255, 0, 0, 0.2); color: #ff0000; }
     .sidebar-icon.web { background: rgba(239, 68, 68, 0.2); color: var(--accent); }
 
-    .sidebar-item-info {
-      flex: 1;
-    }
-
-    .sidebar-item-name {
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    .sidebar-item-handle {
-      color: var(--text-secondary);
-      font-size: 13px;
-    }
+    .sidebar-item-info { flex: 1; }
+    .sidebar-item-name { font-weight: 600; font-size: 14px; }
+    .sidebar-item-handle { color: var(--text-secondary); font-size: 12px; }
 
     .topic-tag {
       display: inline-block;
-      padding: 8px 16px;
+      padding: 6px 12px;
       background: var(--surface-2);
       border-radius: 9999px;
-      font-size: 14px;
-      margin: 4px;
+      font-size: 13px;
+      margin: 3px;
       transition: all 0.2s;
     }
 
-    .topic-tag:hover {
-      background: var(--surface-3);
+    .topic-tag:hover { background: var(--surface-3); }
+
+    .sidebar-footer {
+      padding: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
     }
 
-    .sidebar-link {
-      display: block;
-      padding: 12px;
-      text-align: center;
-      color: var(--accent);
-      font-size: 14px;
-      cursor: pointer;
-    }
+    .sidebar-footer a { margin-right: 10px; }
+    .sidebar-footer a:hover { text-decoration: underline; }
 
-    .sidebar-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Footer nav for mobile */
+    /* ========== MOBILE NAV ========== */
     .mobile-nav {
       display: none;
       position: fixed;
@@ -537,128 +509,109 @@
       right: 0;
       background: var(--bg);
       border-top: 1px solid var(--border);
-      padding: 12px;
+      padding: 10px;
       justify-content: space-around;
       z-index: 100;
     }
 
     @media (max-width: 1000px) {
       .mobile-nav { display: flex; }
-      .feed { padding-bottom: 70px; }
+      .content-scroll { padding-bottom: 60px; }
     }
 
     .mobile-nav-item {
-      font-size: 24px;
+      font-size: 22px;
       padding: 8px;
-      opacity: 0.6;
+      opacity: 0.5;
       transition: opacity 0.2s;
-    }
-
-    .mobile-nav-item.active {
-      opacity: 1;
-    }
-
-    /* Compose button */
-    .compose-btn {
-      position: fixed;
-      bottom: 100px;
-      right: 24px;
-      width: 56px;
-      height: 56px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      color: white;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
-      transition: all 0.2s;
-      z-index: 50;
     }
 
-    .compose-btn:hover {
-      transform: scale(1.1);
-      background: var(--accent-hover);
-    }
-
-    @media (min-width: 1000px) {
-      .compose-btn { display: none; }
-    }
+    .mobile-nav-item.active { opacity: 1; }
   </style>
 </head>
 <body>
   <div class="app">
     <!-- Main Column -->
     <main class="main">
-      <!-- Header -->
-      <header class="header">
-        <div class="header-top">
-          <a href="/0.0_FunnelFunction_WebSite/" class="back-btn">←</a>
-          <div class="header-info">
-            <h1>Funnel Function</h1>
-            <span>142 posts</span>
-          </div>
-        </div>
-      </header>
-
-      <!-- Profile Section -->
-      <section class="profile">
+      <!-- ===== FIXED PROFILE HEADER ===== -->
+      <div class="profile-fixed">
         <div class="profile-banner"></div>
-        <div class="profile-header">
+        <div class="profile-compact">
           <div class="avatar">FF</div>
-          <button class="follow-btn">Follow</button>
+          <div class="profile-details">
+            <div class="profile-row">
+              <div class="profile-identity">
+                <span class="profile-name">Funnel Function</span>
+                <span class="verified">✓</span>
+                <span class="profile-handle">@funnelfunction</span>
+              </div>
+              <button class="follow-btn">Follow</button>
+            </div>
+            <p class="profile-bio">
+              <strong>The Mathematical Architecture of Commercial Attention.</strong> Marketing science that computes. <strong>f(x) = (B·M·S) / (N+L+Θ) × W</strong>
+            </p>
+            <div class="profile-meta">
+              <span>📍 The Internet</span>
+              <span>🔗 <a href="https://funnelfunction.com">funnelfunction.com</a></span>
+              <span>📅 Nov 2025</span>
+            </div>
+            <div class="profile-stats">
+              <span><strong>847</strong> Following</span>
+              <span><strong>2.4K</strong> Followers</span>
+            </div>
+          </div>
         </div>
-        <div class="profile-info">
-          <div class="profile-name">
-            Funnel Function <span class="verified">✓</span>
-          </div>
-          <div class="profile-handle">@funnelfunction</div>
-          <p class="profile-bio">
-            <strong>The Mathematical Architecture of Commercial Attention.</strong>
+      </div>
 
-Marketing science that computes. We prove why campaigns work—or don't—with equations, not opinions.
-
-<strong>f(x) = (B·M·S) / (N+L+Θ) × W</strong>
-          </p>
-          <div class="profile-meta">
-            <span>📍 The Internet</span>
-            <span>🔗 <a href="https://funnelfunction.com" style="color: var(--blue);">funnelfunction.com</a></span>
-            <span>📅 Joined November 2025</span>
-          </div>
-          <div class="profile-stats">
-            <span><strong>847</strong> Following</span>
-            <span><strong>2.4K</strong> Followers</span>
-          </div>
+      <!-- ===== PRIMARY TABS ===== -->
+      <nav class="primary-tabs">
+        <div class="primary-tab active" data-panel="feed">
+          <span class="tab-icon">📰</span> Feed
         </div>
-      </section>
-
-      <!-- Tabs -->
-      <nav class="tabs">
-        <div class="tab active">Posts</div>
-        <div class="tab">Threads</div>
-        <div class="tab">Media</div>
-        <div class="tab">Likes</div>
+        <div class="primary-tab" data-panel="audio">
+          <span class="tab-icon">🎧</span> Audio
+        </div>
+        <div class="primary-tab" data-panel="video">
+          <span class="tab-icon">🎬</span> Video
+        </div>
+        <div class="primary-tab" data-panel="threads">
+          <span class="tab-icon">🧵</span> Threads
+        </div>
+        <div class="primary-tab" data-panel="communities">
+          <span class="tab-icon">👥</span> Communities
+        </div>
+        <div class="primary-tab" data-panel="live">
+          <span class="tab-icon">🔴</span> Live
+        </div>
       </nav>
 
-      <!-- Feed -->
-      <div class="feed">
-        <!-- Pinned Post -->
-        <div class="pinned">
-          <div class="post-label">
-            <span class="post-label-icon">📌</span>
-            Pinned
-          </div>
-          <article class="post">
-            <div class="post-avatar">FF</div>
-            <div class="post-content">
-              <div class="post-header">
-                <span class="post-name">Funnel Function</span>
-                <span class="post-verified">✓</span>
-                <span class="post-handle">@funnelfunction</span>
-              </div>
-              <div class="post-body">The equation that explains why attention converts:
+      <!-- ===== SUB TABS (for Feed) ===== -->
+      <nav class="sub-tabs" id="feedSubTabs">
+        <div class="sub-tab active" data-sub="posts">Posts</div>
+        <div class="sub-tab" data-sub="replies">Replies</div>
+        <div class="sub-tab" data-sub="media">Media</div>
+        <div class="sub-tab" data-sub="likes">Likes</div>
+      </nav>
+
+      <!-- ===== SCROLLABLE CONTENT ===== -->
+      <div class="content-scroll">
+        <!-- FEED PANEL -->
+        <div class="content-panel active" id="panel-feed">
+          <!-- Posts Sub-panel -->
+          <div class="sub-panel active" id="sub-posts">
+            <!-- Pinned Post -->
+            <div class="pinned">
+              <div class="post-label">📌 Pinned</div>
+              <article class="post">
+                <div class="post-avatar">FF</div>
+                <div class="post-content">
+                  <div class="post-header">
+                    <span class="post-name">Funnel Function</span>
+                    <span class="post-verified">✓</span>
+                    <span class="post-handle">@funnelfunction</span>
+                  </div>
+                  <div class="post-body">The equation that explains why attention converts:
 
 <span class="highlight">f(x) = (B · M · S) / (N + L + Θ) × W</span>
 
@@ -673,130 +626,127 @@ Marketing science that computes. We prove why campaigns work—or don't—with e
 The numerator is multiplicative. If ANY channel hits zero, the entire function collapses.
 
 This is marketing science. <span class="hashtag">#FunnelFunction</span></div>
-              <div class="post-actions">
-                <span class="post-action">💬 89</span>
-                <span class="post-action repost">🔄 234</span>
-                <span class="post-action like">❤️ 1.2K</span>
-                <span class="post-action">📤</span>
-              </div>
+                  <div class="post-actions">
+                    <span class="post-action">💬 89</span>
+                    <span class="post-action repost">🔄 234</span>
+                    <span class="post-action like">❤️ 1.2K</span>
+                    <span class="post-action">📤</span>
+                  </div>
+                </div>
+              </article>
             </div>
-          </article>
-        </div>
 
-        <!-- Regular Posts -->
-        <article class="post">
-          <div class="post-avatar">FF</div>
-          <div class="post-content">
-            <div class="post-header">
-              <span class="post-name">Funnel Function</span>
-              <span class="post-verified">✓</span>
-              <span class="post-handle">@funnelfunction</span>
-              <span class="post-time">2h</span>
-            </div>
-            <div class="post-body">Campaign autopsy: Why Mint Mobile's Ryan Reynolds ads achieve near-perfect f(x) scores.
+            <article class="post">
+              <div class="post-avatar">FF</div>
+              <div class="post-content">
+                <div class="post-header">
+                  <span class="post-name">Funnel Function</span>
+                  <span class="post-verified">✓</span>
+                  <span class="post-handle">@funnelfunction</span>
+                  <span class="post-time">2h</span>
+                </div>
+                <div class="post-body">Campaign autopsy: Why Mint Mobile's Ryan Reynolds ads achieve near-perfect f(x) scores.
 
 The multiplicative effect in action:
 • <strong>B</strong> = Celebrity visual anchor ✓
 • <strong>M</strong> = Price comparison clarity ✓
 • <strong>S</strong> = Humor/authenticity connection ✓
 
-None hit zero. That's the secret.
+None hit zero. That's the secret. <span class="hashtag">#MarketingScience</span></div>
+                <div class="post-actions">
+                  <span class="post-action">💬 23</span>
+                  <span class="post-action repost">🔄 67</span>
+                  <span class="post-action like">❤️ 312</span>
+                  <span class="post-action">📤</span>
+                </div>
+              </div>
+            </article>
 
-Full breakdown in our latest article. <span class="hashtag">#MarketingScience</span></div>
-            <div class="post-actions">
-              <span class="post-action">💬 23</span>
-              <span class="post-action repost">🔄 67</span>
-              <span class="post-action like">❤️ 312</span>
-              <span class="post-action">📤</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="post">
-          <div class="post-avatar">FF</div>
-          <div class="post-content">
-            <div class="post-header">
-              <span class="post-name">Funnel Function</span>
-              <span class="post-verified">✓</span>
-              <span class="post-handle">@funnelfunction</span>
-              <span class="post-time">5h</span>
-            </div>
-            <div class="post-body">Hot take: "Trust" in marketing is a mathematical lie.
+            <article class="post">
+              <div class="post-avatar">FF</div>
+              <div class="post-content">
+                <div class="post-header">
+                  <span class="post-name">Funnel Function</span>
+                  <span class="post-verified">✓</span>
+                  <span class="post-handle">@funnelfunction</span>
+                  <span class="post-time">5h</span>
+                </div>
+                <div class="post-body">Hot take: "Trust" in marketing is a mathematical lie.
 
 What people call "trust" is actually just repeated exposure with zero negative signal accumulation in the Θ (friction) component.
 
 You don't build trust. You minimize friction over time.
 
 The equation doesn't lie. <span class="hashtag">#MarketingMath</span></div>
-            <div class="post-actions">
-              <span class="post-action">💬 156</span>
-              <span class="post-action repost">🔄 423</span>
-              <span class="post-action like">❤️ 2.1K</span>
-              <span class="post-action">📤</span>
-            </div>
-          </div>
-        </article>
+                <div class="post-actions">
+                  <span class="post-action">💬 156</span>
+                  <span class="post-action repost">🔄 423</span>
+                  <span class="post-action like">❤️ 2.1K</span>
+                  <span class="post-action">📤</span>
+                </div>
+              </div>
+            </article>
 
-        <article class="post">
-          <div class="post-avatar">FF</div>
-          <div class="post-content">
-            <div class="post-header">
-              <span class="post-name">Funnel Function</span>
-              <span class="post-verified">✓</span>
-              <span class="post-handle">@funnelfunction</span>
-              <span class="post-time">8h</span>
-            </div>
-            <div class="post-body">New simulator just dropped. 🎮
+            <article class="post">
+              <div class="post-avatar">FF</div>
+              <div class="post-content">
+                <div class="post-header">
+                  <span class="post-name">Funnel Function</span>
+                  <span class="post-verified">✓</span>
+                  <span class="post-handle">@funnelfunction</span>
+                  <span class="post-time">8h</span>
+                </div>
+                <div class="post-body">New simulator just dropped. 🎮
 
 Campaign Commander lets you control B, M, S variables in real-time and watch f(x) respond.
 
 Play with the math. See why your campaigns work (or don't).
 
 <span class="hashtag">#BuildInPublic</span> <span class="hashtag">#MarketingTools</span></div>
-            <div class="post-actions">
-              <span class="post-action">💬 34</span>
-              <span class="post-action repost">🔄 89</span>
-              <span class="post-action like">❤️ 567</span>
-              <span class="post-action">📤</span>
-            </div>
-          </div>
-        </article>
+                <div class="post-actions">
+                  <span class="post-action">💬 34</span>
+                  <span class="post-action repost">🔄 89</span>
+                  <span class="post-action like">❤️ 567</span>
+                  <span class="post-action">📤</span>
+                </div>
+              </div>
+            </article>
 
-        <article class="post">
-          <div class="post-avatar">FF</div>
-          <div class="post-content">
-            <div class="post-header">
-              <span class="post-name">Funnel Function</span>
-              <span class="post-verified">✓</span>
-              <span class="post-handle">@funnelfunction</span>
-              <span class="post-time">12h</span>
-            </div>
-            <div class="post-body">The denominator (N + L + Θ) is additive.
+            <article class="post">
+              <div class="post-avatar">FF</div>
+              <div class="post-content">
+                <div class="post-header">
+                  <span class="post-name">Funnel Function</span>
+                  <span class="post-verified">✓</span>
+                  <span class="post-handle">@funnelfunction</span>
+                  <span class="post-time">12h</span>
+                </div>
+                <div class="post-body">The denominator (N + L + Θ) is additive.
 
 This means noise, cognitive load, and friction compound against you. Every extra step. Every confusing element. Every distraction.
 
 They all add up and divide your conversion potential.
 
 Simplify or die. <span class="hashtag">#ConversionOptimization</span></div>
-            <div class="post-actions">
-              <span class="post-action">💬 45</span>
-              <span class="post-action repost">🔄 178</span>
-              <span class="post-action like">❤️ 834</span>
-              <span class="post-action">📤</span>
-            </div>
-          </div>
-        </article>
+                <div class="post-actions">
+                  <span class="post-action">💬 45</span>
+                  <span class="post-action repost">🔄 178</span>
+                  <span class="post-action like">❤️ 834</span>
+                  <span class="post-action">📤</span>
+                </div>
+              </div>
+            </article>
 
-        <article class="post">
-          <div class="post-avatar">FF</div>
-          <div class="post-content">
-            <div class="post-header">
-              <span class="post-name">Funnel Function</span>
-              <span class="post-verified">✓</span>
-              <span class="post-handle">@funnelfunction</span>
-              <span class="post-time">1d</span>
-            </div>
-            <div class="post-body">Thread: Why "almost-sales" fail. 🧵
+            <article class="post">
+              <div class="post-avatar">FF</div>
+              <div class="post-content">
+                <div class="post-header">
+                  <span class="post-name">Funnel Function</span>
+                  <span class="post-verified">✓</span>
+                  <span class="post-handle">@funnelfunction</span>
+                  <span class="post-time">1d</span>
+                </div>
+                <div class="post-body">Thread: Why "almost-sales" fail. 🧵
 
 You got 90% there. Great hook. Strong offer. Clear CTA.
 
@@ -807,25 +757,25 @@ Maybe the Soul (S) component—no emotional resonance. Maybe Mind (M)—too conf
 In a multiplicative system, 0.9 × 0.9 × 0 = 0
 
 Always zero. That's the math.</div>
-            <div class="post-actions">
-              <span class="post-action">💬 67</span>
-              <span class="post-action repost">🔄 234</span>
-              <span class="post-action like">❤️ 1.4K</span>
-              <span class="post-action">📤</span>
-            </div>
-          </div>
-        </article>
+                <div class="post-actions">
+                  <span class="post-action">💬 67</span>
+                  <span class="post-action repost">🔄 234</span>
+                  <span class="post-action like">❤️ 1.4K</span>
+                  <span class="post-action">📤</span>
+                </div>
+              </div>
+            </article>
 
-        <article class="post">
-          <div class="post-avatar">FF</div>
-          <div class="post-content">
-            <div class="post-header">
-              <span class="post-name">Funnel Function</span>
-              <span class="post-verified">✓</span>
-              <span class="post-handle">@funnelfunction</span>
-              <span class="post-time">2d</span>
-            </div>
-            <div class="post-body">W (Writability) is the gate.
+            <article class="post">
+              <div class="post-avatar">FF</div>
+              <div class="post-content">
+                <div class="post-header">
+                  <span class="post-name">Funnel Function</span>
+                  <span class="post-verified">✓</span>
+                  <span class="post-handle">@funnelfunction</span>
+                  <span class="post-time">2d</span>
+                </div>
+                <div class="post-body">W (Writability) is the gate.
 
 You can have perfect B, M, S. Minimal N, L, Θ.
 
@@ -834,21 +784,93 @@ But if the user literally cannot act—no button, broken link, sold out, wrong m
 And 0 gates everything to zero.
 
 Writability is permission + capability + timing. <span class="hashtag">#UX</span></div>
-            <div class="post-actions">
-              <span class="post-action">💬 28</span>
-              <span class="post-action repost">🔄 112</span>
-              <span class="post-action like">❤️ 623</span>
-              <span class="post-action">📤</span>
+                <div class="post-actions">
+                  <span class="post-action">💬 28</span>
+                  <span class="post-action repost">🔄 112</span>
+                  <span class="post-action like">❤️ 623</span>
+                  <span class="post-action">📤</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Replies Sub-panel -->
+          <div class="sub-panel" id="sub-replies">
+            <div class="coming-soon">
+              <div class="coming-soon-icon">💬</div>
+              <h3>Replies</h3>
+              <p>Conversations and responses to other posts will appear here.</p>
             </div>
           </div>
-        </article>
 
+          <!-- Media Sub-panel -->
+          <div class="sub-panel" id="sub-media">
+            <div class="coming-soon">
+              <div class="coming-soon-icon">🖼️</div>
+              <h3>Media</h3>
+              <p>Images, graphics, and visual content will be collected here.</p>
+            </div>
+          </div>
+
+          <!-- Likes Sub-panel -->
+          <div class="sub-panel" id="sub-likes">
+            <div class="coming-soon">
+              <div class="coming-soon-icon">❤️</div>
+              <h3>Likes</h3>
+              <p>Posts and content that Funnel Function has liked.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUDIO PANEL -->
+        <div class="content-panel" id="panel-audio">
+          <div class="coming-soon">
+            <div class="coming-soon-icon">🎧</div>
+            <h3>Audio</h3>
+            <p>Podcast episodes, audio breakdowns, and voice content coming soon. Marketing science you can listen to.</p>
+          </div>
+        </div>
+
+        <!-- VIDEO PANEL -->
+        <div class="content-panel" id="panel-video">
+          <div class="coming-soon">
+            <div class="coming-soon-icon">🎬</div>
+            <h3>Video</h3>
+            <p>Campaign autopsies, equation explainers, and visual deep-dives coming soon.</p>
+          </div>
+        </div>
+
+        <!-- THREADS PANEL -->
+        <div class="content-panel" id="panel-threads">
+          <div class="coming-soon">
+            <div class="coming-soon-icon">🧵</div>
+            <h3>Threads</h3>
+            <p>Long-form discussions and multi-part breakdowns. Deep thinking, organized.</p>
+          </div>
+        </div>
+
+        <!-- COMMUNITIES PANEL -->
+        <div class="content-panel" id="panel-communities">
+          <div class="coming-soon">
+            <div class="coming-soon-icon">👥</div>
+            <h3>Communities</h3>
+            <p>Join the conversation. Marketing scientists, growth hackers, and equation enthusiasts.</p>
+          </div>
+        </div>
+
+        <!-- LIVE PANEL -->
+        <div class="content-panel" id="panel-live">
+          <div class="coming-soon">
+            <div class="coming-soon-icon">🔴</div>
+            <h3>Live</h3>
+            <p>Live streams, Q&A sessions, and real-time campaign analysis events.</p>
+          </div>
+        </div>
       </div>
     </main>
 
     <!-- Sidebar -->
     <aside class="sidebar">
-      <!-- Also on -->
       <div class="sidebar-card">
         <h2 class="sidebar-title">Also on</h2>
         <a href="https://www.linkedin.com/in/funnelfunction/" target="_blank" class="sidebar-item">
@@ -881,7 +903,6 @@ Writability is permission + capability + timing. <span class="hashtag">#UX</span
         </a>
       </div>
 
-      <!-- Topics -->
       <div class="sidebar-card">
         <h2 class="sidebar-title">Topics</h2>
         <div>
@@ -891,28 +912,26 @@ Writability is permission + capability + timing. <span class="hashtag">#UX</span
           <span class="topic-tag">#ConversionOptimization</span>
           <span class="topic-tag">#Attention</span>
           <span class="topic-tag">#CampaignAutopsy</span>
-          <span class="topic-tag">#BuildInPublic</span>
         </div>
       </div>
 
-      <!-- Explore -->
       <div class="sidebar-card">
         <h2 class="sidebar-title">Explore</h2>
-        <a href="https://funnelfunction.com/research/" target="_blank" class="sidebar-item">
+        <a href="https://funnelfunction.com/research/" class="sidebar-item">
           <div class="sidebar-icon web">📚</div>
           <div class="sidebar-item-info">
             <div class="sidebar-item-name">Deep Research</div>
             <div class="sidebar-item-handle">Whitepapers & proofs</div>
           </div>
         </a>
-        <a href="https://funnelfunction.com/articles/" target="_blank" class="sidebar-item">
+        <a href="https://funnelfunction.com/articles/" class="sidebar-item">
           <div class="sidebar-icon web">📝</div>
           <div class="sidebar-item-info">
             <div class="sidebar-item-name">Articles</div>
             <div class="sidebar-item-handle">Case studies</div>
           </div>
         </a>
-        <a href="/0.0_FunnelFunction_WebSite/simulators/campaign-commander/" class="sidebar-item">
+        <a href="https://funnelfunction.com/simulators/" class="sidebar-item">
           <div class="sidebar-icon web">🎮</div>
           <div class="sidebar-item-info">
             <div class="sidebar-item-name">Simulators</div>
@@ -921,25 +940,63 @@ Writability is permission + capability + timing. <span class="hashtag">#UX</span
         </a>
       </div>
 
-      <!-- Footer -->
-      <div style="padding: 16px; font-size: 13px; color: var(--text-secondary);">
-        <a href="https://funnelfunction.com" style="margin-right: 12px;">Home</a>
-        <a href="https://github.com/FunnelFunction/0.0_git_funnelfunction_marketing_Principals" style="margin-right: 12px;">Principals</a>
+      <div class="sidebar-footer">
+        <a href="https://funnelfunction.com">Home</a>
+        <a href="https://github.com/FunnelFunction/0.0_git_funnelfunction_marketing_Principals">Principals</a>
         <a href="https://github.com/FunnelFunction/0.0_FunnelFunction_WebSite">Source</a>
         <p style="margin-top: 8px;">© 2025 Funnel Function Institute</p>
       </div>
     </aside>
   </div>
 
-  <!-- Mobile compose button -->
-  <div class="compose-btn">+</div>
-
-  <!-- Mobile nav -->
+  <!-- Mobile Nav -->
   <nav class="mobile-nav">
     <span class="mobile-nav-item active">🏠</span>
     <span class="mobile-nav-item">🔍</span>
     <span class="mobile-nav-item">🔔</span>
     <span class="mobile-nav-item">✉️</span>
   </nav>
+
+  <script>
+    // Primary tab switching
+    const primaryTabs = document.querySelectorAll('.primary-tab');
+    const panels = document.querySelectorAll('.content-panel');
+    const feedSubTabs = document.getElementById('feedSubTabs');
+
+    primaryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        primaryTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Show corresponding panel
+        const panelId = 'panel-' + tab.dataset.panel;
+        panels.forEach(p => p.classList.remove('active'));
+        document.getElementById(panelId).classList.add('active');
+
+        // Show/hide sub-tabs based on panel
+        if (tab.dataset.panel === 'feed') {
+          feedSubTabs.style.display = 'flex';
+        } else {
+          feedSubTabs.style.display = 'none';
+        }
+      });
+    });
+
+    // Sub-tab switching (for Feed)
+    const subTabs = document.querySelectorAll('.sub-tab');
+    const subPanels = document.querySelectorAll('.sub-panel');
+
+    subTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        subTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const subId = 'sub-' + tab.dataset.sub;
+        subPanels.forEach(p => p.classList.remove('active'));
+        document.getElementById(subId).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
