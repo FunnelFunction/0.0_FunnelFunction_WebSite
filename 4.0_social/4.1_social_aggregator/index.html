@@ -3,795 +3,943 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>f(Social) | The Origin Hub | Funnel Function Institute</title>
-  <meta name="description" content="f(Social) - Content-origin-first social architecture. Where marketing science insights are born before syndication. The Intent Tensor in action.">
+  <title>Funnel Function | f(Social)</title>
+  <meta name="description" content="Funnel Function Institute - Marketing science insights, equation breakdowns, and campaign analysis. The origin of f(x) content.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="f(Social) - The Origin Hub">
-  <meta property="og:description" content="Content originates here, then flows everywhere. A mathematical model of social media done right.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://funnelfunction.github.io/0.0_FunnelFunction_WebSite/social/4.1_social_aggregator/">
-
+  <meta property="og:title" content="Funnel Function | f(Social)">
+  <meta property="og:description" content="Marketing science that computes. Follow for equation breakdowns, campaign autopsies, and the math behind why attention converts.">
+  <meta property="og:type" content="profile">
   <meta name="theme-color" content="#ef4444">
 
-  <style>
-    :root {
-      --red: #ef4444;
-      --red-glow: rgba(239, 68, 68, 0.4);
-      --orange: #f97316;
-      --blue: #3b82f6;
-      --purple: #8b5cf6;
-      --cyan: #06b6d4;
-      --green: #10b981;
-      --bg: #0a0a0f;
-      --surface: #111118;
-      --surface-2: #1a1a24;
-      --surface-3: #242432;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-light: rgba(255, 255, 255, 0.15);
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --surface-2: #141414;
+      --surface-3: #1c1c1c;
+      --border: #2a2a2a;
+      --border-light: #3a3a3a;
+      --text: #e7e9ea;
+      --text-secondary: #71767b;
+      --accent: #ef4444;
+      --accent-hover: #dc2626;
+      --blue: #1d9bf0;
+      --green: #00ba7c;
+    }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
       min-height: 100vh;
-      line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    /* ===== HERO ===== */
-    .hero {
-      position: relative;
-      padding: 80px 20px 60px;
-      text-align: center;
-      background: radial-gradient(ellipse at 50% 0%, rgba(239, 68, 68, 0.15) 0%, transparent 60%);
-      border-bottom: 1px solid var(--border);
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%);
-      opacity: 0.3;
-      pointer-events: none;
-      filter: blur(80px);
-    }
-
-    .hero-equation {
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
-      color: var(--red);
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      opacity: 0.8;
-    }
-
-    .hero h1 {
-      font-size: clamp(48px, 10vw, 72px);
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--red) 0%, var(--orange) 50%, var(--red) 100%);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 8s ease infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .hero-tagline {
-      font-size: 20px;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 30px;
-    }
-
-    .hero-statement {
-      display: inline-block;
-      background: var(--surface);
-      border: 1px solid var(--red);
-      border-radius: 50px;
-      padding: 12px 32px;
-      font-size: 16px;
-      color: var(--text);
-      box-shadow: 0 0 30px var(--red-glow);
-    }
-
-    .hero-statement strong { color: var(--red); }
-
-    /* ===== INTENT TENSOR SECTION ===== */
-    .tensor-section {
-      padding: 80px 20px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-label {
-      font-size: 12px;
-      color: var(--cyan);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .section-title {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    .section-subtitle {
-      color: var(--text-muted);
-      font-size: 16px;
-      max-width: 600px;
+    /* Layout */
+    .app {
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    .tensor-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1000px;
-      margin: 0 auto;
+      grid-template-columns: 1fr 380px;
+      min-height: 100vh;
     }
 
-    @media (max-width: 800px) {
-      .tensor-grid { grid-template-columns: 1fr; }
+    @media (max-width: 1000px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
     }
 
-    .tensor-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-      transition: all 0.3s ease;
+    /* Main Column */
+    .main {
+      border-right: 1px solid var(--border);
+      min-height: 100vh;
     }
 
-    .tensor-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-light);
-    }
-
-    .tensor-card.i { border-top: 3px solid var(--red); }
-    .tensor-card.j { border-top: 3px solid var(--cyan); }
-    .tensor-card.k { border-top: 3px solid var(--purple); }
-
-    .tensor-symbol {
-      font-family: 'Times New Roman', serif;
-      font-size: 48px;
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-
-    .tensor-card.i .tensor-symbol { color: var(--red); }
-    .tensor-card.j .tensor-symbol { color: var(--cyan); }
-    .tensor-card.k .tensor-symbol { color: var(--purple); }
-
-    .tensor-name {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .tensor-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .tensor-equation {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 30px;
-      text-align: center;
-      max-width: 700px;
-      margin: 40px auto 0;
-    }
-
-    .tensor-equation code {
-      font-family: 'Courier New', monospace;
-      font-size: 24px;
-      color: var(--text);
-      letter-spacing: 1px;
-    }
-
-    .tensor-equation code .red { color: var(--red); }
-    .tensor-equation code .cyan { color: var(--cyan); }
-    .tensor-equation code .purple { color: var(--purple); }
-
-    .tensor-equation p {
-      margin-top: 15px;
-      font-size: 14px;
-      color: var(--text-dim);
-    }
-
-    /* ===== SYNDICATION FLOW ===== */
-    .flow-section {
-      padding: 80px 20px;
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      z-index: 100;
     }
 
-    .flow-visual {
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 16px;
+    }
+
+    .back-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 50px;
+      cursor: pointer;
+      transition: background 0.2s;
     }
 
-    .flow-node {
-      background: var(--surface);
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      padding: 25px 30px;
-      text-align: center;
-      min-width: 140px;
-      transition: all 0.3s ease;
+    .back-btn:hover { background: var(--surface-2); }
+
+    .header-info h1 {
+      font-size: 20px;
+      font-weight: 700;
     }
 
-    .flow-node:hover {
-      border-color: var(--border-light);
-      transform: scale(1.05);
+    .header-info span {
+      font-size: 13px;
+      color: var(--text-secondary);
     }
 
-    .flow-node.origin {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.2));
-      border-color: var(--red);
-      box-shadow: 0 0 40px var(--red-glow);
-    }
-
-    .flow-node .icon {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .flow-node .name {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .flow-node.origin .name { color: var(--red); }
-
-    .flow-arrow {
-      font-size: 24px;
-      color: var(--text-dim);
-      animation: pulse 2s ease infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
-    /* ===== LIVE FEED ===== */
-    .feed-section {
-      padding: 80px 20px;
-      background: var(--surface);
+    /* Profile Section */
+    .profile {
+      padding: 16px;
       border-bottom: 1px solid var(--border);
     }
 
-    .feed-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 900px) {
-      .feed-container { grid-template-columns: 1fr; }
-    }
-
-    .feed-panel {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+    .profile-banner {
+      height: 200px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
       border-radius: 16px;
+      margin-bottom: -68px;
+      position: relative;
       overflow: hidden;
     }
 
-    .feed-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface-3);
+    .profile-banner::after {
+      content: 'f(x)';
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      font-size: 120px;
+      font-weight: 800;
+      opacity: 0.1;
+      color: var(--accent);
     }
 
-    .feed-title {
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 16px;
+      margin-bottom: 12px;
+    }
+
+    .avatar {
+      width: 134px;
+      height: 134px;
+      border-radius: 50%;
+      border: 4px solid var(--bg);
+      background: linear-gradient(135deg, var(--accent), #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .follow-btn {
+      margin-top: 80px;
+      padding: 10px 24px;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .follow-btn:hover {
+      background: #d1d5db;
+    }
+
+    .profile-info {
+      padding: 0 16px;
+    }
+
+    .profile-name {
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .verified {
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .profile-handle {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .profile-bio {
+      font-size: 15px;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .profile-bio strong { color: var(--accent); }
+
+    .profile-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .profile-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .profile-stats {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+    }
+
+    .profile-stats strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab {
+      flex: 1;
+      padding: 16px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .tab:hover {
+      background: var(--surface-2);
+    }
+
+    .tab.active {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Feed */
+    .feed {
+      /* Posts go here */
+    }
+
+    /* Post */
+    .post {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .post:hover {
+      background: var(--surface);
+    }
+
+    .post-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .post-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .post-name {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .post-verified {
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .post-handle {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    .post-time {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    .post-time::before {
+      content: '·';
+      margin: 0 4px;
+    }
+
+    .post-body {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      white-space: pre-wrap;
+    }
+
+    .post-body .highlight {
+      color: var(--accent);
+      font-family: 'Courier New', monospace;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .post-body .hashtag {
+      color: var(--blue);
+    }
+
+    .post-body .mention {
+      color: var(--blue);
+    }
+
+    .post-media {
+      margin-bottom: 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .post-media img {
+      width: 100%;
+      display: block;
+    }
+
+    .post-code {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+
+    .post-actions {
+      display: flex;
+      justify-content: space-between;
+      max-width: 425px;
+    }
+
+    .post-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      padding: 8px;
+      margin: -8px;
+      border-radius: 9999px;
+      transition: all 0.2s;
+    }
+
+    .post-action:hover {
+      color: var(--blue);
+      background: rgba(29, 155, 240, 0.1);
+    }
+
+    .post-action.like:hover {
+      color: #f91880;
+      background: rgba(249, 24, 128, 0.1);
+    }
+
+    .post-action.repost:hover {
+      color: var(--green);
+      background: rgba(0, 186, 124, 0.1);
+    }
+
+    .post-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .post-label-icon {
+      font-size: 16px;
+    }
+
+    /* Pinned indicator */
+    .pinned .post-label {
+      color: var(--text-secondary);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .feed-icon {
-      width: 36px;
-      height: 36px;
+    .sidebar-item:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-item:hover {
+      opacity: 0.8;
+    }
+
+    .sidebar-icon {
+      width: 40px;
+      height: 40px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 18px;
-      font-weight: bold;
     }
 
-    .feed-icon.twitter { background: rgba(29, 161, 242, 0.2); color: #1da1f2; }
-    .feed-icon.linkedin { background: rgba(0, 119, 181, 0.2); color: #0077b5; }
+    .sidebar-icon.linkedin { background: rgba(0, 119, 181, 0.2); color: #0077b5; }
+    .sidebar-icon.twitter { background: rgba(29, 161, 242, 0.2); color: #1d9bf0; }
+    .sidebar-icon.github { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    .sidebar-icon.youtube { background: rgba(255, 0, 0, 0.2); color: #ff0000; }
+    .sidebar-icon.web { background: rgba(239, 68, 68, 0.2); color: var(--accent); }
 
-    .feed-name {
+    .sidebar-item-info {
+      flex: 1;
+    }
+
+    .sidebar-item-name {
       font-weight: 600;
       font-size: 15px;
     }
 
-    .feed-handle {
+    .sidebar-item-handle {
+      color: var(--text-secondary);
       font-size: 13px;
-      color: var(--text-muted);
     }
 
-    .feed-status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--green);
+    .topic-tag {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--surface-2);
+      border-radius: 9999px;
+      font-size: 14px;
+      margin: 4px;
+      transition: all 0.2s;
     }
 
-    .feed-status::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--green);
+    .topic-tag:hover {
+      background: var(--surface-3);
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 12px;
+      text-align: center;
+      color: var(--accent);
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .sidebar-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer nav for mobile */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 12px;
+      justify-content: space-around;
+      z-index: 100;
+    }
+
+    @media (max-width: 1000px) {
+      .mobile-nav { display: flex; }
+      .feed { padding-bottom: 70px; }
+    }
+
+    .mobile-nav-item {
+      font-size: 24px;
+      padding: 8px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .mobile-nav-item.active {
+      opacity: 1;
+    }
+
+    /* Compose button */
+    .compose-btn {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background: var(--accent);
       border-radius: 50%;
-      animation: blink 2s ease infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .feed-body {
-      min-height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .feed-body iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-
-    .feed-placeholder {
-      text-align: center;
-      padding: 40px;
-    }
-
-    .feed-placeholder-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
-      opacity: 0.5;
-    }
-
-    .feed-placeholder p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 20px;
-      max-width: 250px;
-    }
-
-    .feed-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--surface-3);
-      border: 1px solid var(--border-light);
-      border-radius: 8px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .feed-link:hover {
-      background: var(--surface);
-      transform: translateY(-2px);
-    }
-
-    /* ===== METRICS DASHBOARD ===== */
-    .metrics-section {
-      padding: 80px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1000px;
-      margin: 50px auto 0;
-    }
-
-    @media (max-width: 800px) {
-      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .metric-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 36px;
-      font-weight: 700;
-      font-family: 'Courier New', monospace;
-      margin-bottom: 8px;
-    }
-
-    .metric-card:nth-child(1) .metric-value { color: var(--red); }
-    .metric-card:nth-child(2) .metric-value { color: var(--cyan); }
-    .metric-card:nth-child(3) .metric-value { color: var(--green); }
-    .metric-card:nth-child(4) .metric-value { color: var(--purple); }
-
-    .metric-label {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .metric-note {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 13px;
-      color: var(--text-dim);
-    }
-
-    /* ===== MODEL NOTICE ===== */
-    .model-section {
-      padding: 60px 20px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .model-box {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(239, 68, 68, 0.05));
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 16px;
-      padding: 40px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .model-box h2 {
-      color: var(--purple);
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .model-box p {
-      color: var(--text-muted);
-      font-size: 15px;
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-
-    .model-box p:last-child { margin-bottom: 0; }
-    .model-box strong { color: var(--text); }
-
-    /* ===== NAVIGATION ===== */
-    .nav-section {
-      padding: 60px 20px;
-    }
-
-    .nav-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 800px) {
-      .nav-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .nav-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .nav-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-light);
-    }
-
-    .nav-card .icon {
       font-size: 28px;
-      margin-bottom: 12px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+      transition: all 0.2s;
+      z-index: 50;
     }
 
-    .nav-card .title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 6px;
+    .compose-btn:hover {
+      transform: scale(1.1);
+      background: var(--accent-hover);
     }
 
-    .nav-card .desc {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      color: var(--text-dim);
-      font-size: 14px;
-    }
-
-    footer a {
-      color: var(--red);
-      text-decoration: none;
-    }
-
-    footer a:hover { text-decoration: underline; }
-
-    footer .equation {
-      font-family: 'Courier New', monospace;
-      color: var(--text-muted);
-      margin-top: 10px;
+    @media (min-width: 1000px) {
+      .compose-btn { display: none; }
     }
   </style>
 </head>
 <body>
+  <div class="app">
+    <!-- Main Column -->
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-top">
+          <a href="/0.0_FunnelFunction_WebSite/" class="back-btn">←</a>
+          <div class="header-info">
+            <h1>Funnel Function</h1>
+            <span>142 posts</span>
+          </div>
+        </div>
+      </header>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-equation">T<sub>ijk</sub> = INTENT × PLATFORM × TIME</div>
-    <h1>f(Social)</h1>
-    <p class="hero-tagline">Content-origin-first social architecture. Where marketing science insights are born before syndication across the network graph.</p>
-    <div class="hero-statement">
-      <strong>If you saw it here, you saw it everywhere.</strong>
-    </div>
-  </header>
+      <!-- Profile Section -->
+      <section class="profile">
+        <div class="profile-banner"></div>
+        <div class="profile-header">
+          <div class="avatar">FF</div>
+          <button class="follow-btn">Follow</button>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name">
+            Funnel Function <span class="verified">✓</span>
+          </div>
+          <div class="profile-handle">@funnelfunction</div>
+          <p class="profile-bio">
+            <strong>The Mathematical Architecture of Commercial Attention.</strong>
 
-  <!-- INTENT TENSOR -->
-  <section class="tensor-section">
-    <div class="section-header">
-      <div class="section-label">The Mathematical Framework</div>
-      <h2 class="section-title">Intent Tensor Theory</h2>
-      <p class="section-subtitle">Social media as a multi-dimensional tensor capturing intent gradients across user behavior, platform affordances, and temporal decay.</p>
-    </div>
+Marketing science that computes. We prove why campaigns work—or don't—with equations, not opinions.
 
-    <div class="tensor-grid">
-      <div class="tensor-card i">
-        <div class="tensor-symbol">i</div>
-        <div class="tensor-name">User Intent</div>
-        <div class="tensor-desc">The gradient of user behavior - scrolls, likes, shares, dwell time. What the audience actually wants.</div>
-      </div>
-      <div class="tensor-card j">
-        <div class="tensor-symbol">j</div>
-        <div class="tensor-name">Platform Affordances</div>
-        <div class="tensor-desc">Channel characteristics - audio vs. video, text vs. visual, real-time vs. persistent. What each platform enables.</div>
-      </div>
-      <div class="tensor-card k">
-        <div class="tensor-symbol">k</div>
-        <div class="tensor-name">Temporal Decay</div>
-        <div class="tensor-desc">How trends fade over time. The half-life of attention. When content stops converting.</div>
-      </div>
-    </div>
+<strong>f(x) = (B·M·S) / (N+L+Θ) × W</strong>
+          </p>
+          <div class="profile-meta">
+            <span>📍 The Internet</span>
+            <span>🔗 <a href="https://funnelfunction.com" style="color: var(--blue);">funnelfunction.com</a></span>
+            <span>📅 Joined November 2025</span>
+          </div>
+          <div class="profile-stats">
+            <span><strong>847</strong> Following</span>
+            <span><strong>2.4K</strong> Followers</span>
+          </div>
+        </div>
+      </section>
 
-    <div class="tensor-equation">
-      <code><span class="red">T</span><sub><span class="red">i</span><span class="cyan">j</span><span class="purple">k</span></sub> where eigenvalue λ > 1 = sustained growth</code>
-      <p>Success requires the tensor's principal eigenvalue to exceed 1. Below that threshold: network decay.</p>
-    </div>
-  </section>
+      <!-- Tabs -->
+      <nav class="tabs">
+        <div class="tab active">Posts</div>
+        <div class="tab">Threads</div>
+        <div class="tab">Media</div>
+        <div class="tab">Likes</div>
+      </nav>
 
-  <!-- SYNDICATION FLOW -->
-  <section class="flow-section">
-    <div class="section-header">
-      <div class="section-label">Network Architecture</div>
-      <h2 class="section-title">Syndication Flow</h2>
-      <p class="section-subtitle">Content originates at one node, then propagates through the graph. One source of truth, many deployments.</p>
-    </div>
+      <!-- Feed -->
+      <div class="feed">
+        <!-- Pinned Post -->
+        <div class="pinned">
+          <div class="post-label">
+            <span class="post-label-icon">📌</span>
+            Pinned
+          </div>
+          <article class="post">
+            <div class="post-avatar">FF</div>
+            <div class="post-content">
+              <div class="post-header">
+                <span class="post-name">Funnel Function</span>
+                <span class="post-verified">✓</span>
+                <span class="post-handle">@funnelfunction</span>
+              </div>
+              <div class="post-body">The equation that explains why attention converts:
 
-    <div class="flow-visual">
-      <div class="flow-node origin">
-        <div class="icon">🔴</div>
-        <div class="name">f(Social)</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="icon">in</div>
-        <div class="name">LinkedIn</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="icon">𝕏</div>
-        <div class="name">Twitter</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="icon">📂</div>
-        <div class="name">GitHub</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="icon">▶</div>
-        <div class="name">YouTube</div>
-      </div>
-    </div>
-  </section>
+<span class="highlight">f(x) = (B · M · S) / (N + L + Θ) × W</span>
 
-  <!-- LIVE FEEDS -->
-  <section class="feed-section">
-    <div class="section-header">
-      <div class="section-label">Live Mirrors</div>
-      <h2 class="section-title">Syndicated Presence</h2>
-      <p class="section-subtitle">Real-time proof that content flows from origin to destination.</p>
-    </div>
+<strong>B</strong> = Body (physical/sensory engagement)
+<strong>M</strong> = Mind (cognitive processing)
+<strong>S</strong> = Soul (emotional resonance)
+<strong>N</strong> = Noise (competing signals)
+<strong>L</strong> = Load (cognitive burden)
+<strong>Θ</strong> = Theta (friction/barriers)
+<strong>W</strong> = Writability (ability to act)
 
-    <div class="feed-container">
-      <!-- Twitter Feed -->
-      <div class="feed-panel">
-        <div class="feed-header">
-          <div class="feed-title">
-            <div class="feed-icon twitter">𝕏</div>
-            <div>
-              <div class="feed-name">Twitter / X</div>
-              <div class="feed-handle">@FunnelFunction</div>
+The numerator is multiplicative. If ANY channel hits zero, the entire function collapses.
+
+This is marketing science. <span class="hashtag">#FunnelFunction</span></div>
+              <div class="post-actions">
+                <span class="post-action">💬 89</span>
+                <span class="post-action repost">🔄 234</span>
+                <span class="post-action like">❤️ 1.2K</span>
+                <span class="post-action">📤</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Regular Posts -->
+        <article class="post">
+          <div class="post-avatar">FF</div>
+          <div class="post-content">
+            <div class="post-header">
+              <span class="post-name">Funnel Function</span>
+              <span class="post-verified">✓</span>
+              <span class="post-handle">@funnelfunction</span>
+              <span class="post-time">2h</span>
+            </div>
+            <div class="post-body">Campaign autopsy: Why Mint Mobile's Ryan Reynolds ads achieve near-perfect f(x) scores.
+
+The multiplicative effect in action:
+• <strong>B</strong> = Celebrity visual anchor ✓
+• <strong>M</strong> = Price comparison clarity ✓
+• <strong>S</strong> = Humor/authenticity connection ✓
+
+None hit zero. That's the secret.
+
+Full breakdown in our latest article. <span class="hashtag">#MarketingScience</span></div>
+            <div class="post-actions">
+              <span class="post-action">💬 23</span>
+              <span class="post-action repost">🔄 67</span>
+              <span class="post-action like">❤️ 312</span>
+              <span class="post-action">📤</span>
             </div>
           </div>
-          <div class="feed-status">Live</div>
-        </div>
-        <div class="feed-body">
-          <a class="twitter-timeline"
-             data-theme="dark"
-             data-chrome="noheader nofooter noborders transparent"
-             data-height="400"
-             href="https://twitter.com/FunnelFunction">
-            Loading tweets...
-          </a>
-          <script async src="https://platform.twitter.com/widgets.js"></script>
-        </div>
-      </div>
+        </article>
 
-      <!-- LinkedIn Panel -->
-      <div class="feed-panel">
-        <div class="feed-header">
-          <div class="feed-title">
-            <div class="feed-icon linkedin">in</div>
-            <div>
-              <div class="feed-name">LinkedIn</div>
-              <div class="feed-handle">@funnelfunction</div>
+        <article class="post">
+          <div class="post-avatar">FF</div>
+          <div class="post-content">
+            <div class="post-header">
+              <span class="post-name">Funnel Function</span>
+              <span class="post-verified">✓</span>
+              <span class="post-handle">@funnelfunction</span>
+              <span class="post-time">5h</span>
+            </div>
+            <div class="post-body">Hot take: "Trust" in marketing is a mathematical lie.
+
+What people call "trust" is actually just repeated exposure with zero negative signal accumulation in the Θ (friction) component.
+
+You don't build trust. You minimize friction over time.
+
+The equation doesn't lie. <span class="hashtag">#MarketingMath</span></div>
+            <div class="post-actions">
+              <span class="post-action">💬 156</span>
+              <span class="post-action repost">🔄 423</span>
+              <span class="post-action like">❤️ 2.1K</span>
+              <span class="post-action">📤</span>
             </div>
           </div>
-          <div class="feed-status">Live</div>
-        </div>
-        <div class="feed-body">
-          <div class="feed-placeholder">
-            <div class="feed-placeholder-icon">in</div>
-            <p>LinkedIn restricts third-party embeds. View the live profile for syndicated content.</p>
-            <a href="https://www.linkedin.com/in/funnelfunction/" class="feed-link" target="_blank" rel="noopener">
-              View Profile →
-            </a>
+        </article>
+
+        <article class="post">
+          <div class="post-avatar">FF</div>
+          <div class="post-content">
+            <div class="post-header">
+              <span class="post-name">Funnel Function</span>
+              <span class="post-verified">✓</span>
+              <span class="post-handle">@funnelfunction</span>
+              <span class="post-time">8h</span>
+            </div>
+            <div class="post-body">New simulator just dropped. 🎮
+
+Campaign Commander lets you control B, M, S variables in real-time and watch f(x) respond.
+
+Play with the math. See why your campaigns work (or don't).
+
+<span class="hashtag">#BuildInPublic</span> <span class="hashtag">#MarketingTools</span></div>
+            <div class="post-actions">
+              <span class="post-action">💬 34</span>
+              <span class="post-action repost">🔄 89</span>
+              <span class="post-action like">❤️ 567</span>
+              <span class="post-action">📤</span>
+            </div>
           </div>
+        </article>
+
+        <article class="post">
+          <div class="post-avatar">FF</div>
+          <div class="post-content">
+            <div class="post-header">
+              <span class="post-name">Funnel Function</span>
+              <span class="post-verified">✓</span>
+              <span class="post-handle">@funnelfunction</span>
+              <span class="post-time">12h</span>
+            </div>
+            <div class="post-body">The denominator (N + L + Θ) is additive.
+
+This means noise, cognitive load, and friction compound against you. Every extra step. Every confusing element. Every distraction.
+
+They all add up and divide your conversion potential.
+
+Simplify or die. <span class="hashtag">#ConversionOptimization</span></div>
+            <div class="post-actions">
+              <span class="post-action">💬 45</span>
+              <span class="post-action repost">🔄 178</span>
+              <span class="post-action like">❤️ 834</span>
+              <span class="post-action">📤</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-avatar">FF</div>
+          <div class="post-content">
+            <div class="post-header">
+              <span class="post-name">Funnel Function</span>
+              <span class="post-verified">✓</span>
+              <span class="post-handle">@funnelfunction</span>
+              <span class="post-time">1d</span>
+            </div>
+            <div class="post-body">Thread: Why "almost-sales" fail. 🧵
+
+You got 90% there. Great hook. Strong offer. Clear CTA.
+
+But one channel hit zero.
+
+Maybe the Soul (S) component—no emotional resonance. Maybe Mind (M)—too confusing.
+
+In a multiplicative system, 0.9 × 0.9 × 0 = 0
+
+Always zero. That's the math.</div>
+            <div class="post-actions">
+              <span class="post-action">💬 67</span>
+              <span class="post-action repost">🔄 234</span>
+              <span class="post-action like">❤️ 1.4K</span>
+              <span class="post-action">📤</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-avatar">FF</div>
+          <div class="post-content">
+            <div class="post-header">
+              <span class="post-name">Funnel Function</span>
+              <span class="post-verified">✓</span>
+              <span class="post-handle">@funnelfunction</span>
+              <span class="post-time">2d</span>
+            </div>
+            <div class="post-body">W (Writability) is the gate.
+
+You can have perfect B, M, S. Minimal N, L, Θ.
+
+But if the user literally cannot act—no button, broken link, sold out, wrong market—W = 0.
+
+And 0 gates everything to zero.
+
+Writability is permission + capability + timing. <span class="hashtag">#UX</span></div>
+            <div class="post-actions">
+              <span class="post-action">💬 28</span>
+              <span class="post-action repost">🔄 112</span>
+              <span class="post-action like">❤️ 623</span>
+              <span class="post-action">📤</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Also on -->
+      <div class="sidebar-card">
+        <h2 class="sidebar-title">Also on</h2>
+        <a href="https://www.linkedin.com/in/funnelfunction/" target="_blank" class="sidebar-item">
+          <div class="sidebar-icon linkedin">in</div>
+          <div class="sidebar-item-info">
+            <div class="sidebar-item-name">LinkedIn</div>
+            <div class="sidebar-item-handle">@funnelfunction</div>
+          </div>
+        </a>
+        <a href="https://twitter.com/FunnelFunction" target="_blank" class="sidebar-item">
+          <div class="sidebar-icon twitter">𝕏</div>
+          <div class="sidebar-item-info">
+            <div class="sidebar-item-name">Twitter / X</div>
+            <div class="sidebar-item-handle">@FunnelFunction</div>
+          </div>
+        </a>
+        <a href="https://github.com/FunnelFunction" target="_blank" class="sidebar-item">
+          <div class="sidebar-icon github">⌨</div>
+          <div class="sidebar-item-info">
+            <div class="sidebar-item-name">GitHub</div>
+            <div class="sidebar-item-handle">FunnelFunction</div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@FunnelFunction" target="_blank" class="sidebar-item">
+          <div class="sidebar-icon youtube">▶</div>
+          <div class="sidebar-item-info">
+            <div class="sidebar-item-name">YouTube</div>
+            <div class="sidebar-item-handle">Coming soon</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Topics -->
+      <div class="sidebar-card">
+        <h2 class="sidebar-title">Topics</h2>
+        <div>
+          <span class="topic-tag">#FunnelFunction</span>
+          <span class="topic-tag">#MarketingScience</span>
+          <span class="topic-tag">#MarketingMath</span>
+          <span class="topic-tag">#ConversionOptimization</span>
+          <span class="topic-tag">#Attention</span>
+          <span class="topic-tag">#CampaignAutopsy</span>
+          <span class="topic-tag">#BuildInPublic</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- METRICS -->
-  <section class="metrics-section">
-    <div class="section-header">
-      <div class="section-label">Network Metrics</div>
-      <h2 class="section-title">The Numbers That Matter</h2>
-      <p class="section-subtitle">Key indicators from the social graph. Track acquisition, activation, retention, referral.</p>
-    </div>
-
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-value">k=1.2</div>
-        <div class="metric-label">Viral Coefficient</div>
+      <!-- Explore -->
+      <div class="sidebar-card">
+        <h2 class="sidebar-title">Explore</h2>
+        <a href="https://funnelfunction.com/research/" target="_blank" class="sidebar-item">
+          <div class="sidebar-icon web">📚</div>
+          <div class="sidebar-item-info">
+            <div class="sidebar-item-name">Deep Research</div>
+            <div class="sidebar-item-handle">Whitepapers & proofs</div>
+          </div>
+        </a>
+        <a href="https://funnelfunction.com/articles/" target="_blank" class="sidebar-item">
+          <div class="sidebar-icon web">📝</div>
+          <div class="sidebar-item-info">
+            <div class="sidebar-item-name">Articles</div>
+            <div class="sidebar-item-handle">Case studies</div>
+          </div>
+        </a>
+        <a href="/0.0_FunnelFunction_WebSite/simulators/campaign-commander/" class="sidebar-item">
+          <div class="sidebar-icon web">🎮</div>
+          <div class="sidebar-item-info">
+            <div class="sidebar-item-name">Simulators</div>
+            <div class="sidebar-item-handle">Play with the math</div>
+          </div>
+        </a>
       </div>
-      <div class="metric-card">
-        <div class="metric-value">4</div>
-        <div class="metric-label">Syndication Nodes</div>
+
+      <!-- Footer -->
+      <div style="padding: 16px; font-size: 13px; color: var(--text-secondary);">
+        <a href="https://funnelfunction.com" style="margin-right: 12px;">Home</a>
+        <a href="https://github.com/FunnelFunction/0.0_git_funnelfunction_marketing_Principals" style="margin-right: 12px;">Principals</a>
+        <a href="https://github.com/FunnelFunction/0.0_FunnelFunction_WebSite">Source</a>
+        <p style="margin-top: 8px;">© 2025 Funnel Function Institute</p>
       </div>
-      <div class="metric-card">
-        <div class="metric-value">λ>1</div>
-        <div class="metric-label">Eigenvalue Status</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-value">∞</div>
-        <div class="metric-label">Origin Persistence</div>
-      </div>
-    </div>
+    </aside>
+  </div>
 
-    <p class="metric-note">Metrics represent the architectural model. Real-time analytics require API integration.</p>
-  </section>
+  <!-- Mobile compose button -->
+  <div class="compose-btn">+</div>
 
-  <!-- MODEL NOTICE -->
-  <section class="model-section">
-    <div class="model-box">
-      <h2>This is a Model</h2>
-      <p><strong>f(Social)</strong> is not a platform you can join. It's a demonstration of what social media architecture could look like when built on <strong>mathematical principles</strong> rather than engagement hacking.</p>
-      <p>The Intent Tensor framework shows how to model user behavior. The syndication flow shows content-origin-first design. The metrics show what actually matters for sustained growth.</p>
-      <p>This is where <strong>Funnel Function Institute</strong> content lives before it goes anywhere else. The canonical source. The Git repo of social media.</p>
-    </div>
-  </section>
-
-  <!-- NAVIGATION -->
-  <section class="nav-section">
-    <div class="nav-grid">
-      <a href="https://funnelfunction.com/research/" class="nav-card">
-        <div class="icon">📚</div>
-        <div class="title">Deep Research</div>
-        <div class="desc">Mathematical foundations</div>
-      </a>
-      <a href="https://funnelfunction.com/articles/" class="nav-card">
-        <div class="icon">📝</div>
-        <div class="title">Articles</div>
-        <div class="desc">Case studies & analysis</div>
-      </a>
-      <a href="/0.0_FunnelFunction_WebSite/simulators/campaign-commander/" class="nav-card">
-        <div class="icon">🎮</div>
-        <div class="title">Simulators</div>
-        <div class="desc">Interactive tools</div>
-      </a>
-      <a href="https://github.com/FunnelFunction" class="nav-card">
-        <div class="icon">📂</div>
-        <div class="title">Source Code</div>
-        <div class="desc">Fork the math</div>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    <p>
-      <strong>f(Social)</strong> — Content-Origin-First Social Architecture<br>
-      Built by <a href="https://funnelfunction.com">Funnel Function Institute</a>
-    </p>
-    <p class="equation">T<sub>ijk</sub> where λ > 1</p>
-  </footer>
-
+  <!-- Mobile nav -->
+  <nav class="mobile-nav">
+    <span class="mobile-nav-item active">🏠</span>
+    <span class="mobile-nav-item">🔍</span>
+    <span class="mobile-nav-item">🔔</span>
+    <span class="mobile-nav-item">✉️</span>
+  </nav>
 </body>
 </html>
