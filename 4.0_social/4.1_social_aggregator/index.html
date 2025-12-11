@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media | Funnel Function Institute</title>
+  <meta name="description" content="Follow Funnel Function Institute across social platforms. Marketing science insights, real-time analysis, and equation updates from Twitter, LinkedIn, Instagram, and TikTok.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Funnel Function Social - Follow the Science">
+  <meta property="og:description" content="Marketing science insights across all platforms. The math of attention, delivered in bite-size pieces.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://funnelfunction.com/social/">
+
+  <!-- Theme Color - Red for Social -->
+  <meta name="theme-color" content="#ef4444">
+
+  <style>
+    :root {
+      /* Social Media = RED */
+      --primary: #ef4444;
+      --primary-light: rgba(239, 68, 68, 0.1);
+      --primary-border: rgba(239, 68, 68, 0.3);
+
+      /* Cross-promo colors */
+      --deep-knowledge-blue: #3b82f6;
+      --articles-orange: #f97316;
+      --simulators-purple: #8b5cf6;
+
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 48px;
+      background: linear-gradient(135deg, var(--primary), #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+
+    .tagline {
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* SEO Content Section */
+    .seo-intro {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .seo-intro h2 {
+      color: var(--primary);
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .seo-intro p {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    /* Social Grid */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      padding: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .social-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .social-card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .social-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .social-icon.twitter { background: rgba(29, 161, 242, 0.2); }
+    .social-icon.linkedin { background: rgba(0, 119, 181, 0.2); }
+    .social-icon.instagram { background: linear-gradient(45deg, rgba(253, 29, 29, 0.2), rgba(131, 58, 180, 0.2)); }
+    .social-icon.tiktok { background: rgba(255, 255, 255, 0.1); }
+
+    .social-info h3 {
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .social-handle {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .social-card-body {
+      padding: 30px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* API Pending State */
+    .api-pending {
+      text-align: center;
+    }
+
+    .api-pending-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .api-pending-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+      opacity: 0.5;
+    }
+
+    .api-pending-text {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 250px;
+      margin-bottom: 20px;
+    }
+
+    .follow-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .follow-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .follow-button.twitter {
+      background: rgba(29, 161, 242, 0.1);
+      border: 1px solid rgba(29, 161, 242, 0.3);
+      color: #1da1f2;
+    }
+
+    .follow-button.linkedin {
+      background: rgba(0, 119, 181, 0.1);
+      border: 1px solid rgba(0, 119, 181, 0.3);
+      color: #0077b5;
+    }
+
+    .follow-button.instagram {
+      background: linear-gradient(45deg, rgba(253, 29, 29, 0.1), rgba(131, 58, 180, 0.1));
+      border: 1px solid rgba(253, 29, 29, 0.3);
+      color: #e1306c;
+    }
+
+    .follow-button.tiktok {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text);
+    }
+
+    /* Cross-Promotion Section */
+    .crosspromo-section {
+      padding: 60px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .crosspromo-section h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+
+    .crosspromo-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .crosspromo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .crosspromo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .crosspromo-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 30px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .crosspromo-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .crosspromo-card.blue {
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .crosspromo-card.orange {
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+
+    .crosspromo-card.purple {
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .crosspromo-card .icon {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .crosspromo-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .crosspromo-card.blue h3 { color: var(--deep-knowledge-blue); }
+    .crosspromo-card.orange h3 { color: var(--articles-orange); }
+    .crosspromo-card.purple h3 { color: var(--simulators-purple); }
+
+    .crosspromo-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* SEO Footer Content */
+    .seo-footer {
+      padding: 60px 20px;
+      border-top: 1px solid var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .seo-footer h2 {
+      color: var(--primary);
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .seo-columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .seo-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .seo-column h3 {
+      color: var(--text);
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .seo-column p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .seo-column ul {
+      color: var(--text-muted);
+      font-size: 14px;
+      padding-left: 20px;
+    }
+
+    .seo-column li {
+      margin-bottom: 8px;
+    }
+
+    /* Footer Attribution */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .attribution {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .attribution a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .attribution a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📱 Social Media Hub</h1>
+      <p class="tagline">Follow the science of attention across every platform. Real-time marketing insights based on the Funnel Function.</p>
+    </header>
+
+    <!-- SEO Intro Content -->
+    <section class="seo-intro">
+      <h2>Marketing Science in Your Feed</h2>
+      <p>
+        The <strong>Funnel Function Institute</strong> shares daily insights on commercial attention,
+        conversion psychology, and the mathematics of marketing effectiveness. Our social channels
+        break down complex equations into actionable insights.
+      </p>
+      <p>
+        From the <strong>Master Funnel Function</strong> f(x) = (B·M·S) / (N+L+Θ) to real-world
+        case studies analyzing campaigns like <strong>Mint Mobile</strong> and <strong>Temu</strong>,
+        we publish content that helps marketers understand <em>why</em> campaigns succeed or fail.
+      </p>
+    </section>
+
+    <!-- Social Media Cards Grid -->
+    <section class="social-grid">
+      <!-- Twitter/X -->
+      <div class="social-card">
+        <div class="social-card-header">
+          <div class="social-icon twitter">𝕏</div>
+          <div class="social-info">
+            <h3>Twitter / X</h3>
+            <span class="social-handle">@FunnelFunction</span>
+          </div>
+        </div>
+        <div class="social-card-body">
+          <div class="api-pending">
+            <div class="api-pending-badge">API Pending</div>
+            <div class="api-pending-icon">🔌</div>
+            <p class="api-pending-text">
+              Twitter feed integration coming soon. For now, follow us directly.
+            </p>
+            <a href="https://twitter.com/FunnelFunction" class="follow-button twitter" target="_blank" rel="noopener">
+              Follow on X →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="social-card">
+        <div class="social-card-header">
+          <div class="social-icon linkedin">in</div>
+          <div class="social-info">
+            <h3>LinkedIn</h3>
+            <span class="social-handle">Funnel Function Institute</span>
+          </div>
+        </div>
+        <div class="social-card-body">
+          <div class="api-pending">
+            <div class="api-pending-badge">API Pending</div>
+            <div class="api-pending-icon">🔌</div>
+            <p class="api-pending-text">
+              LinkedIn feed integration coming soon. Connect with us directly.
+            </p>
+            <a href="https://linkedin.com/company/funnelfunction" class="follow-button linkedin" target="_blank" rel="noopener">
+              Connect on LinkedIn →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="social-card">
+        <div class="social-card-header">
+          <div class="social-icon instagram">📷</div>
+          <div class="social-info">
+            <h3>Instagram</h3>
+            <span class="social-handle">@funnelfunction</span>
+          </div>
+        </div>
+        <div class="social-card-body">
+          <div class="api-pending">
+            <div class="api-pending-badge">API Pending</div>
+            <div class="api-pending-icon">🔌</div>
+            <p class="api-pending-text">
+              Instagram feed integration coming soon. Follow for visual breakdowns.
+            </p>
+            <a href="https://instagram.com/funnelfunction" class="follow-button instagram" target="_blank" rel="noopener">
+              Follow on Instagram →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TikTok -->
+      <div class="social-card">
+        <div class="social-card-header">
+          <div class="social-icon tiktok">♪</div>
+          <div class="social-info">
+            <h3>TikTok</h3>
+            <span class="social-handle">@funnelfunction</span>
+          </div>
+        </div>
+        <div class="social-card-body">
+          <div class="api-pending">
+            <div class="api-pending-badge">API Pending</div>
+            <div class="api-pending-icon">🔌</div>
+            <p class="api-pending-text">
+              TikTok feed integration coming soon. Watch 60-second equation breakdowns.
+            </p>
+            <a href="https://tiktok.com/@funnelfunction" class="follow-button tiktok" target="_blank" rel="noopener">
+              Follow on TikTok →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cross-Promotion Section -->
+    <section class="crosspromo-section">
+      <h2>Go Deeper</h2>
+      <p class="crosspromo-subtitle">
+        Social posts are just the surface. Dive into the full science behind the soundbites.
+      </p>
+
+      <div class="crosspromo-grid">
+        <a href="https://funnelfunction.com/whitepapers/" class="crosspromo-card blue">
+          <div class="icon">📚</div>
+          <h3>Deep Knowledge</h3>
+          <p>
+            Full academic whitepapers on the mathematical architecture of commercial attention.
+            Peer-reviewed methodology and complete equation derivations.
+          </p>
+        </a>
+
+        <a href="https://funnelfunction.com/blog/" class="crosspromo-card orange">
+          <div class="icon">📝</div>
+          <h3>Articles & Case Studies</h3>
+          <p>
+            Real-world analysis of campaigns using the Funnel Function.
+            Mint Mobile, Temu, and the death of trust in modern marketing.
+          </p>
+        </a>
+
+        <a href="/5.0_simulators/5.1_simulator_campaign_commander/" class="crosspromo-card purple">
+          <div class="icon">🎮</div>
+          <h3>Interactive Simulators</h3>
+          <p>
+            Play with the variables yourself. Campaign Commander and Gating Function Lab
+            let you see the math in action.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- SEO Footer Content -->
+    <section class="seo-footer">
+      <h2>What We Share on Social</h2>
+
+      <div class="seo-columns">
+        <div class="seo-column">
+          <h3>Content Types</h3>
+          <ul>
+            <li><strong>Equation Breakdowns:</strong> Single variables from f(x) explained in plain language</li>
+            <li><strong>Campaign Autopsies:</strong> Why specific ads succeeded or failed</li>
+            <li><strong>Friction Analysis:</strong> Real checkout flows and their conversion killers</li>
+            <li><strong>Attention Metrics:</strong> Real-time observations on commercial attention patterns</li>
+          </ul>
+        </div>
+
+        <div class="seo-column">
+          <h3>Key Topics</h3>
+          <ul>
+            <li><strong>Body (B):</strong> Creative quality, sensory impact, visual stopping power</li>
+            <li><strong>Mind (M):</strong> Targeting precision, intent matching, relevance signals</li>
+            <li><strong>Soul (S):</strong> Brand authenticity, identity congruence, trust building</li>
+            <li><strong>Suppression:</strong> Noise, cognitive load, and friction in modern marketing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="attribution">
+        Built by <a href="https://funnelfunction.com">Funnel Function Institute</a> |
+        <a href="https://github.com/FunnelFunction">GitHub</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
