@@ -163,8 +163,8 @@
 
 | ID | Model | Status | Description |
 |----|-------|--------|-------------|
-| 6.1.3 | **FunnelFunctionModel** | 📋 Planned | Differentiable f(x) |
-| 6.2.3 | **CommitmentModel** | 📋 Planned | Differentiable f(Commitment) |
+| 6.1.3 | **FunnelFunctionModel** | ✅ Implemented | Differentiable f(x) with optimizer |
+| 6.2.3 | **CommitmentModel** | ✅ Implemented | Differentiable f(Commitment) with time series |
 | 6.10 | **AttentionPredictor** | 🔮 Future | Neural attention prediction |
 | 6.11 | **IdentityEncoder** | 🔮 Future | Embed brand → identity space |
 
@@ -193,7 +193,7 @@
 - **Blog Posts**: 3 live, 3 planned, 2 future
 - **Simulators**: 2 live (React), 3 planned, 4 future
 - **Social Hub**: 1 ready (API pending for feeds)
-- **Equations**: 1 implemented, 8 planned, 2 future
+- **Equations**: 2 implemented (Python + PyTorch), 6 planned, 2 future
 
 ### Q1 2026 Targets
 - [ ] All 3 whitepapers published
