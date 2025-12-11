@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funnel Function | The Mathematical Architecture of Commercial Attention</title>
+  <meta name="description" content="The Funnel Function Institute: Computational marketing science. The equation that explains why attention converts. f(x) = (B·M·S) / (N+L+Θ) × W">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Funnel Function Institute">
+  <meta property="og:description" content="The Mathematical Architecture of Commercial Attention. Marketing science that actually computes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://funnelfunction.github.io/">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#8b5cf6">
+
+  <style>
+    :root {
+      --primary: #8b5cf6;
+      --secondary: #d946ef;
+      --deep-blue: #3b82f6;
+      --articles-orange: #f97316;
+      --social-red: #ef4444;
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: rgba(139, 92, 246, 0.3);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .hero .tagline {
+      font-size: 24px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .equation-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: 'Courier New', monospace;
+    }
+
+    .equation-hero .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .equation-hero .formula {
+      font-size: 28px;
+      color: var(--text);
+    }
+
+    .equation-hero .description {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 15px;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* Navigation Grid */
+    .nav-section {
+      padding: 60px 20px;
+    }
+
+    .nav-section h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: var(--text);
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .nav-card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .nav-card.blue {
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .nav-card.blue:hover {
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+      border-color: var(--deep-blue);
+    }
+
+    .nav-card.orange {
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+    .nav-card.orange:hover {
+      box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+      border-color: var(--articles-orange);
+    }
+
+    .nav-card.red {
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .nav-card.red:hover {
+      box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+      border-color: var(--social-red);
+    }
+
+    .nav-card.purple {
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .nav-card.purple:hover {
+      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+      border-color: var(--primary);
+    }
+
+    .nav-card .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .nav-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .nav-card.blue h3 { color: var(--deep-blue); }
+    .nav-card.orange h3 { color: var(--articles-orange); }
+    .nav-card.red h3 { color: var(--social-red); }
+    .nav-card.purple h3 { color: var(--primary); }
+
+    .nav-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .nav-card .arrow {
+      display: inline-block;
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-card.blue .arrow { color: var(--deep-blue); }
+    .nav-card.orange .arrow { color: var(--articles-orange); }
+    .nav-card.red .arrow { color: var(--social-red); }
+    .nav-card.purple .arrow { color: var(--primary); }
+
+    /* Quick Links */
+    .quick-links {
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .quick-links h3 {
+      text-align: center;
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .quick-links-grid {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .quick-link {
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+
+    .quick-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Funnel Function</h1>
+      <p class="tagline">The Mathematical Architecture of Commercial Attention</p>
+
+      <div class="equation-hero">
+        <div class="label">The Master Equation</div>
+        <div class="formula">f(x) = (B·M·S) / (N+L+Θ) × W</div>
+        <p class="description">
+          Body × Mind × Soul, divided by Noise + Load + Friction, gated by Writability.
+          The equation that explains why attention converts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Navigation Grid -->
+    <section class="nav-section">
+      <h2>Explore the Science</h2>
+
+      <div class="nav-grid">
+        <!-- Deep Knowledge (Blue) -->
+        <a href="https://funnelfunction.com/whitepapers/" class="nav-card blue">
+          <div class="icon">📚</div>
+          <h3>Deep Knowledge</h3>
+          <p>
+            Academic whitepapers on the mathematical foundations of commercial attention.
+            Peer-reviewed methodology, complete equation derivations, and formal proofs.
+          </p>
+          <span class="arrow">Read Whitepapers →</span>
+        </a>
+
+        <!-- Articles (Orange) -->
+        <a href="https://funnelfunction.com/blog/" class="nav-card orange">
+          <div class="icon">📝</div>
+          <h3>Articles & Case Studies</h3>
+          <p>
+            Real-world analysis using the Funnel Function. The Mint Mobile case study,
+            why "Trust" is a mathematical lie, and the death of intuition-based marketing.
+          </p>
+          <span class="arrow">Read Articles →</span>
+        </a>
+
+        <!-- Social (Red) -->
+        <a href="/social/4.1_social_aggregator/" class="nav-card red">
+          <div class="icon">📱</div>
+          <h3>Social Media Hub</h3>
+          <p>
+            Daily marketing science insights across all platforms. Equation breakdowns,
+            campaign autopsies, and real-time attention observations.
+          </p>
+          <span class="arrow">Follow the Science →</span>
+        </a>
+
+        <!-- Simulators (Purple) -->
+        <a href="/simulators/campaign-commander/" class="nav-card purple">
+          <div class="icon">🎮</div>
+          <h3>Interactive Simulators</h3>
+          <p>
+            Play with the variables yourself. Campaign Commander lets you control
+            Body, Mind, Soul and see real-time attention calculations.
+          </p>
+          <span class="arrow">Launch Simulators →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+      <h3>Quick Access</h3>
+      <div class="quick-links-grid">
+        <a href="/simulators/campaign-commander/" class="quick-link">🎯 Campaign Commander</a>
+        <a href="/simulators/gating-function-lab/" class="quick-link">🚪 Gating Function Lab</a>
+        <a href="https://funnelfunction.com/whitepapers/mathematical-decomposition-of-trust/" class="quick-link">📄 Trust Whitepaper</a>
+        <a href="https://funnelfunction.com/2025/12/05/the-purest-execution-of-fx-ever-recorded-the-mint-mobile-case-study/" class="quick-link">📊 Mint Mobile Case Study</a>
+        <a href="https://github.com/FunnelFunction" class="quick-link">💻 GitHub</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        Built by <a href="https://funnelfunction.com">Funnel Function Institute</a> |
+        <a href="https://github.com/FunnelFunction/0.0_FunnelFunction_WebSite">Source Code</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
