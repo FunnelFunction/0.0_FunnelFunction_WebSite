@@ -3,352 +3,937 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Funnel Function | The Mathematical Architecture of Commercial Attention</title>
-  <meta name="description" content="The Funnel Function Institute: Computational marketing science. The equation that explains why attention converts. f(x) = (B·M·S) / (N+L+Θ) × W">
+  <title>Funnel Function | We Build Apps That Market Themselves</title>
+  <meta name="description" content="App development, AI engineering, and automation consulting. We build autonomous systems that generate revenue while you sleep. Book a call today.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Funnel Function Institute">
-  <meta property="og:description" content="The Mathematical Architecture of Commercial Attention. Marketing science that actually computes.">
+  <meta property="og:title" content="Funnel Function | Apps That Market Themselves">
+  <meta property="og:description" content="App development, AI engineering, automation consulting. Build autonomous revenue systems.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://funnelfunction.github.io/">
+  <meta name="theme-color" content="#ef4444">
 
-  <!-- Theme -->
-  <meta name="theme-color" content="#8b5cf6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --primary: #8b5cf6;
-      --secondary: #d946ef;
-      --deep-blue: #3b82f6;
-      --articles-orange: #f97316;
-      --social-red: #ef4444;
-      --bg: #0a0a0f;
-      --surface: #111118;
-      --border: rgba(139, 92, 246, 0.3);
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --surface-2: #111111;
+      --surface-3: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #ffffff;
+      --text-secondary: #a0a0a0;
+      --accent: #ef4444;
+      --accent-hover: #dc2626;
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --green: #22c55e;
+      --orange: #f97316;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
     }
 
+    a { color: inherit; text-decoration: none; }
+
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0 24px;
     }
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
+    /* ========== NAV ========== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 16px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      background: radial-gradient(ellipse at top, rgba(239, 68, 68, 0.1) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 24px;
     }
 
     .hero h1 {
-      font-size: 56px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      font-size: clamp(40px, 8vw, 72px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--orange));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-3);
+      border-color: var(--text-secondary);
+    }
+
+    /* ========== EQUATION STRIP ========== */
+    .equation-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .equation-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .equation-formula {
+      font-family: 'Courier New', monospace;
+      font-size: clamp(20px, 4vw, 32px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .equation-desc {
+      color: var(--text-secondary);
+      font-size: 14px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ========== SERVICES ========== */
+    .services {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--text-secondary);
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 32px;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .service-card:nth-child(1) .service-icon { background: rgba(239, 68, 68, 0.1); }
+    .service-card:nth-child(2) .service-icon { background: rgba(139, 92, 246, 0.1); }
+    .service-card:nth-child(3) .service-icon { background: rgba(59, 130, 246, 0.1); }
+
+    .service-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
       margin-bottom: 20px;
     }
 
-    .hero .tagline {
-      font-size: 24px;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto 30px;
+    .service-features {
+      list-style: none;
     }
 
-    .equation-hero {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 30px;
-      max-width: 600px;
-      margin: 0 auto;
-      font-family: 'Courier New', monospace;
+    .service-features li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .equation-hero .label {
+    .service-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ========== VIBE CODING EVENT ========== */
+    .event {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    }
+
+    .event-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 32px;
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .event-card {
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+      }
+    }
+
+    .event-badge {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 100px;
       font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .event-content h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .event-content p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .event-price {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .event-price-note {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .event-features {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      padding: 32px;
+    }
+
+    .event-features h4 {
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: var(--primary);
-      margin-bottom: 15px;
+      color: var(--purple);
+      margin-bottom: 20px;
     }
 
-    .equation-hero .formula {
-      font-size: 28px;
-      color: var(--text);
+    .event-features ul {
+      list-style: none;
     }
 
-    .equation-hero .description {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 15px;
-      font-family: system-ui, sans-serif;
+    .event-features li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    /* Navigation Grid */
-    .nav-section {
-      padding: 60px 20px;
+    .event-features li:last-child { border-bottom: none; }
+
+    .event-features li .icon {
+      font-size: 20px;
     }
 
-    .nav-section h2 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 40px;
-      color: var(--text);
+    /* ========== FREE RESOURCES ========== */
+    .resources {
+      padding: 100px 0;
     }
 
-    .nav-grid {
+    .resources-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
     @media (max-width: 768px) {
-      .nav-grid {
-        grid-template-columns: 1fr;
-      }
+      .resources-grid { grid-template-columns: 1fr; }
     }
 
-    .nav-card {
+    .resource-card {
       background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 30px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .nav-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .nav-card.blue {
-      border: 1px solid rgba(59, 130, 246, 0.3);
-    }
-    .nav-card.blue:hover {
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-      border-color: var(--deep-blue);
-    }
-
-    .nav-card.orange {
-      border: 1px solid rgba(249, 115, 22, 0.3);
-    }
-    .nav-card.orange:hover {
-      box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
-      border-color: var(--articles-orange);
-    }
-
-    .nav-card.red {
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-    .nav-card.red:hover {
-      box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
-      border-color: var(--social-red);
-    }
-
-    .nav-card.purple {
-      border: 1px solid rgba(139, 92, 246, 0.3);
-    }
-    .nav-card.purple:hover {
-      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
-      border-color: var(--primary);
-    }
-
-    .nav-card .icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .nav-card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .nav-card.blue h3 { color: var(--deep-blue); }
-    .nav-card.orange h3 { color: var(--articles-orange); }
-    .nav-card.red h3 { color: var(--social-red); }
-    .nav-card.purple h3 { color: var(--primary); }
-
-    .nav-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .nav-card .arrow {
-      display: inline-block;
-      margin-top: 15px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .nav-card.blue .arrow { color: var(--deep-blue); }
-    .nav-card.orange .arrow { color: var(--articles-orange); }
-    .nav-card.red .arrow { color: var(--social-red); }
-    .nav-card.purple .arrow { color: var(--primary); }
-
-    /* Quick Links */
-    .quick-links {
-      padding: 40px 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    .quick-links h3 {
+      padding: 32px;
       text-align: center;
+      transition: all 0.3s;
+    }
+
+    .resource-card:hover {
+      border-color: var(--text-secondary);
+      transform: translateY(-2px);
+    }
+
+    .resource-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .resource-card h4 {
       font-size: 18px;
-      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .resource-card p {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* ========== SIMULATORS ========== */
+    .simulators {
+      padding: 100px 0;
+      background: var(--surface);
+    }
+
+    .simulators-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .simulators-content { grid-template-columns: 1fr; }
+    }
+
+    .simulators-text h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
       margin-bottom: 20px;
     }
 
-    .quick-links-grid {
+    .simulators-text p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .simulator-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .simulator-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.2s;
+    }
+
+    .simulator-card:hover {
+      border-color: var(--accent);
+      background: var(--surface-3);
+    }
+
+    .simulator-card .icon {
+      font-size: 32px;
+    }
+
+    .simulator-card h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .simulator-card p {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .custom-simulator {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+      border: 1px dashed var(--accent);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .custom-simulator h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .custom-simulator p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .contact p {
+      color: var(--text-secondary);
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .contact-methods {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 24px;
       flex-wrap: wrap;
+      margin-bottom: 60px;
     }
 
-    .quick-link {
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
+    .contact-method {
       background: var(--surface);
       border: 1px solid var(--border);
-      color: var(--text);
-      transition: all 0.2s ease;
-    }
-
-    .quick-link:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    /* Footer */
-    footer {
-      padding: 40px 20px;
+      border-radius: 16px;
+      padding: 32px 48px;
       text-align: center;
+      transition: all 0.2s;
+    }
+
+    .contact-method:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .contact-method .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .contact-method h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .contact-method p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      padding: 60px 0;
       border-top: 1px solid var(--border);
     }
 
-    footer p {
-      color: var(--text-muted);
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .footer-brand h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      color: var(--text-secondary);
       font-size: 14px;
+      line-height: 1.7;
     }
 
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .footer-col a {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 14px;
+      padding: 6px 0;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--text); }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Hero -->
-    <section class="hero">
-      <h1>Funnel Function</h1>
-      <p class="tagline">The Mathematical Architecture of Commercial Attention</p>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">f(x)</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#event">Events</a>
+        <a href="#simulators">Simulators</a>
+        <a href="https://funnelfunction.com/social/">Social</a>
+        <a href="#contact" class="nav-cta">Contact Us</a>
+      </div>
+    </div>
+  </nav>
 
-      <div class="equation-hero">
-        <div class="label">The Master Equation</div>
-        <div class="formula">f(x) = (B·M·S) / (N+L+Θ) × W</div>
-        <p class="description">
-          Body × Mind × Soul, divided by Noise + Load + Friction, gated by Writability.
-          The equation that explains why attention converts.
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">App Development + AI Engineering + Automation</span>
+        <h1>We Build Apps That <span class="highlight">Market Themselves</span></h1>
+        <p class="hero-sub">
+          Autonomous systems that generate revenue while you sleep. AI-powered automation,
+          self-marketing applications, and engineering that actually computes.
         </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Book a Call</a>
+          <a href="mailto:hello@funnelfunction.com" class="btn btn-secondary">Email Us</a>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Navigation Grid -->
-    <section class="nav-section">
-      <h2>Explore the Science</h2>
-
-      <div class="nav-grid">
-        <!-- Deep Knowledge (Blue) -->
-        <a href="https://funnelfunction.com/whitepapers/" class="nav-card blue">
-          <div class="icon">📚</div>
-          <h3>Deep Knowledge</h3>
-          <p>
-            Academic whitepapers on the mathematical foundations of commercial attention.
-            Peer-reviewed methodology, complete equation derivations, and formal proofs.
-          </p>
-          <span class="arrow">Read Whitepapers →</span>
-        </a>
-
-        <!-- Articles (Orange) -->
-        <a href="https://funnelfunction.com/blog/" class="nav-card orange">
-          <div class="icon">📝</div>
-          <h3>Articles & Case Studies</h3>
-          <p>
-            Real-world analysis using the Funnel Function. The Mint Mobile case study,
-            why "Trust" is a mathematical lie, and the death of intuition-based marketing.
-          </p>
-          <span class="arrow">Read Articles →</span>
-        </a>
-
-        <!-- Social (Red) -->
-        <a href="/social/4.1_social_aggregator/" class="nav-card red">
-          <div class="icon">📱</div>
-          <h3>Social Media Hub</h3>
-          <p>
-            Daily marketing science insights across all platforms. Equation breakdowns,
-            campaign autopsies, and real-time attention observations.
-          </p>
-          <span class="arrow">Follow the Science →</span>
-        </a>
-
-        <!-- Simulators (Purple) -->
-        <a href="/simulators/campaign-commander/" class="nav-card purple">
-          <div class="icon">🎮</div>
-          <h3>Interactive Simulators</h3>
-          <p>
-            Play with the variables yourself. Campaign Commander lets you control
-            Body, Mind, Soul and see real-time attention calculations.
-          </p>
-          <span class="arrow">Launch Simulators →</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Quick Links -->
-    <section class="quick-links">
-      <h3>Quick Access</h3>
-      <div class="quick-links-grid">
-        <a href="/simulators/campaign-commander/" class="quick-link">🎯 Campaign Commander</a>
-        <a href="/simulators/gating-function-lab/" class="quick-link">🚪 Gating Function Lab</a>
-        <a href="https://funnelfunction.com/whitepapers/mathematical-decomposition-of-trust/" class="quick-link">📄 Trust Whitepaper</a>
-        <a href="https://funnelfunction.com/2025/12/05/the-purest-execution-of-fx-ever-recorded-the-mint-mobile-case-study/" class="quick-link">📊 Mint Mobile Case Study</a>
-        <a href="https://github.com/FunnelFunction" class="quick-link">💻 GitHub</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>
-        Built by <a href="https://funnelfunction.com">Funnel Function Institute</a> |
-        <a href="https://github.com/FunnelFunction/0.0_FunnelFunction_WebSite">Source Code</a>
+  <!-- Equation Strip -->
+  <section class="equation-strip">
+    <div class="container">
+      <div class="equation-label">The Science Behind Our Work</div>
+      <div class="equation-formula">f(x) = (B·M·S) / (N+L+Θ) × W</div>
+      <p class="equation-desc">
+        Every app we build, every system we design, is optimized against this equation.
+        Body × Mind × Soul, divided by friction, gated by action.
       </p>
-    </footer>
-  </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Services</h2>
+        <p class="section-sub">From concept to deployed, revenue-generating systems.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- App Development -->
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>App Development</h3>
+          <p>Full-stack applications that don't just work—they market themselves and generate revenue autonomously.</p>
+          <ul class="service-features">
+            <li>Self-marketing systems</li>
+            <li>Revenue automation</li>
+            <li>Scalable architecture</li>
+            <li>Launch to market</li>
+          </ul>
+        </div>
+
+        <!-- AI Engineering -->
+        <div class="service-card">
+          <div class="service-icon">🧠</div>
+          <h3>AI Engineering</h3>
+          <p>Claude integration, AI cloning, and intelligent automation. We make AI the central brain of your operations.</p>
+          <ul class="service-features">
+            <li>Claude integration</li>
+            <li>AI workflow automation</li>
+            <li>Custom model training</li>
+            <li>Intelligent agents</li>
+          </ul>
+        </div>
+
+        <!-- Consulting -->
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Consulting</h3>
+          <p>Strategy, architecture, and modernization. We solve hard problems with math and engineering.</p>
+          <ul class="service-features">
+            <li>System architecture</li>
+            <li>Legacy modernization</li>
+            <li>Marketing automation</li>
+            <li>Technical strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vibe Coding Event -->
+  <section class="event" id="event">
+    <div class="container">
+      <div class="event-card">
+        <div class="event-content">
+          <span class="event-badge">Live Event</span>
+          <h2>Vibe Coding: Build an App in One Day</h2>
+          <p>
+            Walk in with nothing. Walk out with a working app, Claude as your central brain,
+            and your entire development environment connected and automated.
+            Wake up tomorrow in a different world.
+          </p>
+          <div class="event-price">$500</div>
+          <p class="event-price-note">Includes Claude Pro Max subscription for the month</p>
+          <a href="#contact" class="btn btn-primary">Reserve Your Spot</a>
+        </div>
+        <div class="event-features">
+          <h4>What You'll Leave With</h4>
+          <ul>
+            <li><span class="icon">💻</span> CLI connected to your terminal</li>
+            <li><span class="icon">🔗</span> APIs connected to all your services</li>
+            <li><span class="icon">🧠</span> Claude as your central brain</li>
+            <li><span class="icon">📱</span> A working, deployed app</li>
+            <li><span class="icon">⚡</span> Automated development workflow</li>
+            <li><span class="icon">🎓</span> Skills to build anything</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Resources -->
+  <section class="resources">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Get Started Free</div>
+        <h2 class="section-title">Resources</h2>
+        <p class="section-sub">Start building today with our free tools and guides.</p>
+      </div>
+
+      <div class="resources-grid">
+        <a href="https://funnelfunction.com/social/" class="resource-card">
+          <div class="resource-icon">📱</div>
+          <h4>f(Social)</h4>
+          <p>Daily insights, tutorials, and marketing science breakdowns.</p>
+        </a>
+        <a href="https://funnelfunction.com/research/" class="resource-card">
+          <div class="resource-icon">📚</div>
+          <h4>Deep Research</h4>
+          <p>Whitepapers and mathematical foundations.</p>
+        </a>
+        <a href="https://funnelfunction.com/articles/" class="resource-card">
+          <div class="resource-icon">📝</div>
+          <h4>Articles</h4>
+          <p>Case studies and real-world breakdowns.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulators -->
+  <section class="simulators" id="simulators">
+    <div class="container">
+      <div class="simulators-content">
+        <div class="simulators-text">
+          <div class="section-label">Interactive Tools</div>
+          <h2>Try Our Simulators</h2>
+          <p>
+            Play with the math yourself. Our simulators let you manipulate variables,
+            see real-time calculations, and understand the science behind effective marketing.
+          </p>
+          <p>
+            <strong>Need a custom simulator?</strong> We build bespoke interactive tools
+            for businesses. Your inputs, your logic, your brand. Simulators can be
+            incredibly valuable—both as internal tools and customer-facing products.
+          </p>
+          <a href="#contact" class="btn btn-primary">Get a Custom Simulator</a>
+        </div>
+        <div>
+          <div class="simulator-cards">
+            <a href="https://funnelfunction.github.io/0.0_FunnelFunction_WebSite/5.0_simulators/5.1_simulator_campaign_commander/" class="simulator-card">
+              <span class="icon">🎯</span>
+              <div>
+                <h4>Campaign Commander</h4>
+                <p>Control B, M, S variables in real-time</p>
+              </div>
+            </a>
+            <a href="https://funnelfunction.github.io/0.0_FunnelFunction_WebSite/5.0_simulators/5.5_simulator_gating_function_lab/" class="simulator-card">
+              <span class="icon">🚪</span>
+              <div>
+                <h4>Gating Function Lab</h4>
+                <p>Explore Writability mechanics</p>
+              </div>
+            </a>
+          </div>
+          <div class="custom-simulator">
+            <h4>Your Simulator Here</h4>
+            <p>We'll build you a custom interactive tool tailored to your business.</p>
+            <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label">Ready to Build?</div>
+      <h2>Let's Talk</h2>
+      <p>
+        Whether you need an app, AI integration, consulting, or want to attend
+        our next Vibe Coding event—we're here.
+      </p>
+
+      <div class="contact-methods">
+        <a href="tel:+1234567890" class="contact-method">
+          <div class="icon">📞</div>
+          <h4>Call</h4>
+          <p>Schedule a call</p>
+        </a>
+        <a href="mailto:hello@funnelfunction.com" class="contact-method">
+          <div class="icon">📧</div>
+          <h4>Email</h4>
+          <p>hello@funnelfunction.com</p>
+        </a>
+        <a href="https://funnelfunction.com/social/" class="contact-method">
+          <div class="icon">💬</div>
+          <h4>Message</h4>
+          <p>DM on social</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Funnel Function</h3>
+          <p>
+            The Mathematical Architecture of Commercial Attention.
+            We build apps that market themselves.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">App Development</a>
+          <a href="#services">AI Engineering</a>
+          <a href="#services">Consulting</a>
+          <a href="#event">Vibe Coding</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="https://funnelfunction.com/social/">f(Social)</a>
+          <a href="https://funnelfunction.com/research/">Deep Research</a>
+          <a href="https://funnelfunction.com/articles/">Articles</a>
+          <a href="#simulators">Simulators</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://github.com/FunnelFunction">GitHub</a>
+          <a href="https://twitter.com/FunnelFunction">Twitter</a>
+          <a href="https://linkedin.com/in/funnelfunction">LinkedIn</a>
+          <a href="https://youtube.com/@FunnelFunction">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Funnel Function Institute. All rights reserved.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
